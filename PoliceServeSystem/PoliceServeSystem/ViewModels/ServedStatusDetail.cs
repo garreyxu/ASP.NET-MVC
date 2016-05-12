@@ -32,7 +32,8 @@ namespace PoliceServeSystem.ViewModels
             WarrantNo = string.Empty;
             CaseNo = string.Empty;
             AccusedNo = string.Empty;
-            ServedTimes = null;
+            ServedTimes = 0;
+            ServedDate = DateTime.Now;
             Result = string.Empty;
             ServedBy = string.Empty;
             IsServed = string.Empty;

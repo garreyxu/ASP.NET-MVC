@@ -21,6 +21,7 @@
             Value = "2"
         }
     };
+    var warrantNo = ViewBag.WarrantNo;
 }
 
 @using (Html.BeginForm())
@@ -34,13 +35,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>WarrantNo</label>
-                    @Html.TextBoxFor(m => m.WarrantNo, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.WarrantNo, new { @class = "form-control", @Value=warrantNo, disabled="disable" })
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Serve Attempt#</label>
-                    @Html.TextBoxFor(m => m.ServedTimes, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.ServedTimes, new { @Value=0, @class = "form-control", disabled="disabled" })
                 </div>
             </div>
         </div>
@@ -48,7 +49,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>DateTime</label>
-                    @Html.TextBoxFor(m => m.ServedDate, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.ServedDate, new { @Value=DateTime.Now, @class = "form-control" })
                 </div>
             </div>
             <div class="col-md-4">

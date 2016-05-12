@@ -68,7 +68,7 @@ namespace PoliceServeSystem.DAL
                         cmd.Parameters.AddWithValue("@WarrantNo", ssd.WarrantNo);
                         cmd.Parameters.AddWithValue("@ServedTimes", ssd.ServedTimes+1);
                         cmd.Parameters.AddWithValue("@IsServed", ssd.IsServed);
-                        cmd.Parameters.AddWithValue("@ServedDate", ssd.ServedDate);
+                        cmd.Parameters.AddWithValue("@ServedDate", DateTime.Now);
                         cmd.Parameters.AddWithValue("@ServedBy", ssd.ServedBy);
                         cmd.Parameters.AddWithValue("@Result", ssd.Result);
 

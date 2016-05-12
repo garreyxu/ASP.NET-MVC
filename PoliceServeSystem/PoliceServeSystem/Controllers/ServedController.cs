@@ -1,5 +1,4 @@
-﻿using System;
-using PoliceServeSystem.DAL;
+﻿using PoliceServeSystem.DAL;
 using PoliceServeSystem.Models;
 using PoliceServeSystem.ViewModels;
 using System.Web.Mvc;
@@ -18,21 +17,35 @@ namespace PoliceServeSystem.Controllers
             _servedStatusDetailBuilder = servedStatusDetailBuilder;
         }
         
-        public ActionResult Index()
-        {
-            return View();
-        }
-        
+
         //Get Served
-        [HttpGet]
         public ActionResult Index(string warrantNo)
         {
-            ServedStatusDetail ssd = GetInfo(warrantNo);
-            return View(ssd);
+            
+            //If typed warrantNo;
+            if (!string.IsNullOrWhiteSpace(warrantNo))
+            {
+                ViewBag.WarrantNo = warrantNo;
+                Served served = _servedStatusDetailDataService.Load(warrantNo);
+
+                //If correct warrantNo
+                if (served != null)
+                {
+                    ServedStatusDetail ssd = _servedStatusDetailBuilder.Build(served);
+
+                    return View(ssd);
+                }
+                ViewBag.Message = "Invalid WarrantNo!";
+                return View();
+            }
+            ViewBag.Message = "Please enter warrantNo!";
+            return View();
         }
 
-        public ActionResult NewServe()
+        [HttpGet]
+        public ActionResult NewServe(string warrantNo)
         {
+            GetDetail(warrantNo);
             return View();
         }
 
@@ -50,10 +63,8 @@ namespace PoliceServeSystem.Controllers
             return View(ssd);
         }
 
-        //Get CaseInfo;
-        public ServedStatusDetail GetInfo(string warrantNo)
+        public ServedStatusDetail GetDetail(string warrantNo)
         {
-            //If typed warrantNo;
             if (!string.IsNullOrWhiteSpace(warrantNo))
             {
                 Served served = _servedStatusDetailDataService.Load(warrantNo);
@@ -71,7 +82,5 @@ namespace PoliceServeSystem.Controllers
             ViewBag.Message = "Please enter warrantNo!";
             return null;
         }
-
-        
     }
 }
