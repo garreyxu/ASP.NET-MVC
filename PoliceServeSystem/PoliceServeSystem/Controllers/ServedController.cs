@@ -49,7 +49,7 @@ namespace PoliceServeSystem.Controllers
                 //ssd.ServedTimes ++;
                 _servedStatusDetailDataService.Save(ssd);
                 ssd = GetDetail(ssd.WarrantNo);
-                TempData["success"] = "Successfully registered";
+                TempData["success"] = "Successfully saved the serve";
                 return RedirectToAction("Index", "Served", ssd);
             }
             ViewBag.NoInfo = "Get Case Info first!";
