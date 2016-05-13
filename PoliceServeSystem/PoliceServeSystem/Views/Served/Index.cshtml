@@ -43,7 +43,7 @@
 </script>
 @using (Html.BeginForm())
 {
-    <div class="form-horizontal">
+    <div>
         <div class="row">
             <H3>General Info</H3>
         </div>
@@ -185,7 +185,7 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
-                    @Html.ActionLink("Edit", "NewServe", new { id = ViewBag.WarrantNo })
+                    @Html.ActionLink("Edit", "NewServe", new { WarrantNo = "11-EW-1256" })
                     @*@Html.ActionLink("Edit", "EditCase")*@
                 </div>
             </div>

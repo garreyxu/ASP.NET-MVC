@@ -10,7 +10,7 @@ namespace PoliceServeSystem.Builders
             var servedStatusDetail = new ServedStatusDetail
             {
                 CaseNo = served.AccusedInfo.CaseNo,
-                AccusedNo = served.WarrantNo,
+                AccusedNo = served.AccusedInfo.AccusedNo,
                 AccusedFirstName = served.AccusedInfo.Acc_FirstName,
                 AccusedLastName = served.AccusedInfo.Acc_LastName,
                 AccusedMiddleName = served.AccusedInfo.Acc_MiddleName,
@@ -22,7 +22,8 @@ namespace PoliceServeSystem.Builders
                 
                 OffenseName = served.OffenseInfo.OffenseName,
                 OffenseType = served.OffenseInfo.Felony,
-                
+
+                WarrantNo = served.WarrantNo,
                 ServedTimes = served.ServedTimes,
                 ServedDate = served.ServedDate,
                 IsServed = served.IsServed,

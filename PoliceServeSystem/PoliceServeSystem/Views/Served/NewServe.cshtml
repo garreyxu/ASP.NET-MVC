@@ -23,11 +23,13 @@
     };
     var warrantNo = ViewBag.WarrantNo;
 }
+<link href="~/Content/css/jquery.signaturepad.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/css/jquery.signature.css" rel="stylesheet" type="text/css" />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
+    <div>
         <div class="row">
             <h3>Serve Status</h3>
         </div>
@@ -35,13 +37,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>WarrantNo</label>
-                    @Html.TextBoxFor(m => m.WarrantNo, new { @class = "form-control", @Value=warrantNo, disabled="disable" })
+                    @Html.TextBoxFor(m => m.WarrantNo, new { @class = "form-control"})
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Serve Attempt#</label>
-                    @Html.TextBoxFor(m => m.ServedTimes, new { @Value=0, @class = "form-control", disabled="disabled" })
+                    @Html.TextBoxFor(m => m.ServedTimes, new { Value=0, @class = "form-control", disabled="disabled" })
                 </div>
             </div>
         </div>
@@ -49,13 +51,13 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>DateTime</label>
-                    @Html.TextBoxFor(m => m.ServedDate, new { @Value=DateTime.Now, @class = "form-control" })
+                    @Html.TextBoxFor(m => m.ServedDate, new {Value = DateTime.Now, @class = "form-control"})
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Result</label>
-                    @Html.TextAreaFor(m => m.Result, new { @class = "form-control" })
+                    @Html.TextAreaFor(m => m.Result, new {@class = "form-control"})
                 </div>
             </div>
             <div class="col-sm-1">
@@ -67,7 +69,18 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Served By</label>
-                    @Html.TextBoxFor(m => m.ServedBy, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.ServedBy, new {@class = "form-control"})
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>Accused Sign</label>
+                <div class="modal-body">
+                    <form class="sigPad" style="text-align:center;" id="JudgeSign">
+                        <canvas class="pad" width="500" height="200" id="signCanvas" style="border: 1px solid grey;"></canvas>
+                        <input type="hidden" name="output" class="output" id="signHdn0">
+                    </form>
                 </div>
             </div>
         </div>
@@ -81,3 +94,18 @@
         </div>
     </div>
 }
+
+<script src="~/Content/assets/plugins/jquery-1.10.2.min.js"></script>
+<script src="~/Content/js/jquery.signaturepad.js"></script>
+<script src="~/Content/js/json2.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.sigPad').signaturePad({
+            drawOnly: true,
+            penColour: 'black'
+        });
+    });
+</script>
+
+

@@ -1,17 +1,27 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PoliceServeSystem.ViewModels
 {
     public class ServedStatusDetail
     {
         #region Properties
+
+        [Required]
         public string WarrantNo { get; set; }
+        [Required]
         public string AccusedNo { get; set; }
+        [Required]
         public string CaseNo { get; set; }
+        [Required]
         public int? ServedTimes { get; set; }
+        [Required]
         public DateTime ServedDate { get; set; }
+        [Required]
         public string Result { get; set; }
+        [Required]
         public string ServedBy { get; set; }
+        [Required]
         public string IsServed { get; set; }
         public string AccusedFirstName { get; set; }
         public string AccusedLastName { get; set; }

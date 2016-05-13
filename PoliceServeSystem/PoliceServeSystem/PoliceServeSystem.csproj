@@ -147,10 +147,12 @@
     <Compile Include="DAL\ServedInfoDataService.cs" />
     <Compile Include="DAL\GetConnection.cs" />
     <Compile Include="DAL\IServedInfoDataService.cs" />
-    <Compile Include="DAL\SignatureBase_DAL.cs" />
+    <Compile Include="DAL\SignatureBaseDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ConfigurationSettingsReader.cs" />
+    <Compile Include="Helper\Tools.cs" />
     <Compile Include="Models\AccusedInfo.cs" />
     <Compile Include="Models\OffenseInfo.cs" />
     <Compile Include="Models\Served.cs" />
@@ -162,6 +164,7 @@
     <Content Include="Content\assets\plugins\jquery-1.10.2.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\jquery.signature.css" />
     <Content Include="Content\css\jquery.signaturepad.css" />
     <Content Include="Content\js\jquery.signaturepad.js" />
     <Content Include="Content\js\jquery.signaturepad.min.js" />
