@@ -66,13 +66,13 @@ namespace PoliceServeSystem.DAL
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         cmd.Parameters.AddWithValue("@WarrantNo", ssd.WarrantNo);
-                        cmd.Parameters.AddWithValue("@ServedTimes", ssd.ServedTimes+1);
                         cmd.Parameters.AddWithValue("@IsServed", ssd.IsServed);
                         cmd.Parameters.AddWithValue("@ServedDate", DateTime.Now);
                         cmd.Parameters.AddWithValue("@ServedBy", ssd.ServedBy);
                         cmd.Parameters.AddWithValue("@Result", ssd.Result);
 
                         cmd.ExecuteNonQuery();
+                        //Add save successfully info
                     }
                 }
             }
@@ -91,18 +91,19 @@ namespace PoliceServeSystem.DAL
                 served.ServedTimes = Convert.ToInt32(sqlDataReader["ServedTimes"]);
                 served.ServedDate = Convert.ToDateTime(sqlDataReader["ServedDate"]);
                 served.ServedBy = Convert.ToString(sqlDataReader["ServedBy"]);
-                switch ((string)sqlDataReader["IsServed"])
-                {
-                    case "Yes":
-                        served.IsServed = "1";
-                        break;
-                    case "No":
-                        served.IsServed = "2";
-                        break;
-                    default:
-                        served.IsServed = "0";
-                        break;
-                }
+                served.IsServed = Convert.ToString(sqlDataReader["IsServed"]);
+                //switch ((string)sqlDataReader["IsServed"])
+                //{
+                //    case "Yes":
+                //        served.IsServed = "1";
+                //        break;
+                //    case "No":
+                //        served.IsServed = "2";
+                //        break;
+                //    default:
+                //        served.IsServed = "0";
+                //        break;
+                //}
                 served.Result = Convert.ToString(sqlDataReader["Result"]);
             }
             else
