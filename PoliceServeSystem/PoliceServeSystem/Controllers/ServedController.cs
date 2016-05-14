@@ -46,7 +46,6 @@ namespace PoliceServeSystem.Controllers
         {
             if (ssd.WarrantNo!=null)
             {
-                //ssd.ServedTimes ++;
                 _servedStatusDetailDataService.Save(ssd);
                 ssd = GetDetail(ssd.WarrantNo);
                 TempData["success"] = "Successfully saved the serve";
