@@ -65,13 +65,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>CaseNo</label>
-                    @Html.TextBoxFor(model => model.CaseNo, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.CaseNo, new {@class = "form-control", disabled="disable"})
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>AccusedNo</label>
-                    @Html.TextBoxFor(model => model.AccusedNo, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedNo, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
         </div>
@@ -79,19 +79,19 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>First Name</label>
-                    @Html.TextBoxFor(model => model.AccusedFirstName, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedFirstName, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Last Name</label>
-                    @Html.TextBoxFor(model => model.AccusedLastName, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedLastName, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Middel Name</label>
-                    @Html.TextBoxFor(model => model.AccusedMiddleName, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedMiddleName, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
         </div>
@@ -99,31 +99,31 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Street</label>
-                    @Html.TextBoxFor(model => model.AccusedStreet, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedStreet, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>City</label>
-                    @Html.TextBoxFor(model => model.AccusedCity, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedCity, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>State</label>
-                    @Html.TextBoxFor(model => model.AccusedState, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedState, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Zip</label>
-                    @Html.TextBoxFor(model => model.AccusedZip, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedZip, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Tel</label>
-                    @Html.TextBoxFor(model => model.AccusedTel, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.AccusedTel, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
         </div>
@@ -134,13 +134,13 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Offense Name</label>
-                    @Html.TextAreaFor(model => model.OffenseName, new {@class = "form-control"})
+                    @Html.TextAreaFor(model => model.OffenseName, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Offense Type</label>
-                    @Html.TextBoxFor(model => model.OffenseType, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.OffenseType, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
         </div>
@@ -151,31 +151,31 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Served Times</label>
-                    @Html.TextBoxFor(model => model.ServedTimes, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.ServedTimes, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Served Date</label>
-                    @Html.TextBoxFor(model => model.ServedDate, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.ServedDate, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Result</label>
-                    @Html.TextAreaFor(model => model.Result, new {@class = "form-control"})
+                    @Html.TextAreaFor(model => model.Result, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
             <div class="col-sm-1">
                 <div class="form-group">
                     <label>Served</label>
-                    @Html.DropDownListFor(m => m.IsServed, listItems)
+                    @Html.DropDownListFor(m => m.IsServed, listItems, new { disabled = "disable" })
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Served By</label>
-                    @Html.TextBoxFor(model => model.ServedBy, new {@class = "form-control"})
+                    @Html.TextBoxFor(model => model.ServedBy, new {@class = "form-control", disabled = "disable" })
                 </div>
             </div>
         </div>
@@ -183,15 +183,8 @@
             <div class="col-md-2">
                 <div class="form-group">
                     @Html.ActionLink("Edit", "NewServe", new {WarrantNo = ViewBag.EditWarrantNo})
-                    @*@Html.ActionLink("Edit", "EditCase")*@
                 </div>
             </div>
         </div>
     </div>
 }
-
-<script type="text/javascript">
-    if(@ViewBag.success)
-        alert(@ViewBag.success);
-    @ViewBag.success = "";
-</script>

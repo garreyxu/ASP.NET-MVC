@@ -329,8 +329,6 @@ F:\PROJECT\Repos\ASP.NET MVC\PoliceServeSystem\PoliceServeSystem\bin\Newtonsoft.
 F:\PROJECT\Repos\ASP.NET MVC\PoliceServeSystem\PoliceServeSystem\obj\Debug\PoliceServeSystem.csprojResolveAssemblyReference.cache
 F:\PROJECT\Repos\ASP.NET MVC\PoliceServeSystem\PoliceServeSystem\obj\Debug\PoliceServeSystem.dll
 F:\PROJECT\Repos\ASP.NET MVC\PoliceServeSystem\PoliceServeSystem\obj\Debug\PoliceServeSystem.pdb
-C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\obj\Debug\PoliceServeSystem.dll
-C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\obj\Debug\PoliceServeSystem.pdb
 C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\bin\roslyn\csc.exe
 C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -376,4 +374,6 @@ C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\bin\Sy
 C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\bin\System.Web.WebPages.Razor.xml
 C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\bin\Antlr3.Runtime.pdb
 C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\bin\Newtonsoft.Json.xml
+C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\obj\Debug\PoliceServeSystem.dll
+C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\obj\Debug\PoliceServeSystem.pdb
 C:\Users\ptg\Source\Repos\ASP.NET-MVC\PoliceServeSystem\PoliceServeSystem\obj\Debug\PoliceServeSystem.csprojResolveAssemblyReference.cache
