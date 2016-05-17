@@ -32,10 +32,11 @@ namespace PoliceServeSystem.Controllers
             }
 
             //=================Form Authentication For User==========================
+            Users user;
             NetGetUsersDal usersdalfile = new NetGetUsersDal();
-            var user = usersdalfile.GetUser(loginId, pwd);
+            user = usersdalfile.GetUser(loginId, pwd);
 
-            if (user.Userid == null)
+            if (user == null)
             {
                 return Json("Username or Password is invalid", JsonRequestBehavior.AllowGet);
             }
