@@ -150,6 +150,7 @@
     <Compile Include="DAL\ServedInfoDataService.cs" />
     <Compile Include="DAL\GetConnection.cs" />
     <Compile Include="DAL\IServedInfoDataService.cs" />
+    <Compile Include="DAL\SignatureBaseDal.cs" />
     <Compile Include="DAL\UsersDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
