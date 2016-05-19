@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Officer Served System";
 
-    var listItems = new List<SelectListItem>
+    var listItemsIsServed = new List<SelectListItem>
     {
         new SelectListItem
         {
@@ -19,6 +19,35 @@
         {
             Text = "No",
             Value = "No"
+        }
+    };
+    var listItemsResult = new List<SelectListItem>
+    {
+        new SelectListItem
+        {
+            Text = "-Select-",
+            Value = "-Select-",
+            Selected = true
+        },
+        new SelectListItem
+        {
+            Text = "Moved",
+            Value = "Moved"
+        },
+        new SelectListItem
+        {
+            Text = "Run away",
+            Value = "Run away"
+        },
+        new SelectListItem
+        {
+            Text = "Not home",
+            Value = "Not home"
+        },
+        new SelectListItem
+        {
+            Text = "Other",
+            Value = "Otherr"
         }
     };
 }
@@ -47,13 +76,13 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>Result</label>
-                @Html.TextAreaFor(m => m.Result, new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.IsServed, listItemsResult)
             </div>
         </div>
         <div class="col-sm-1">
             <div class="form-group">
                 <label>Served</label>
-                @Html.DropDownListFor(m => m.IsServed, listItems)
+                @Html.DropDownListFor(m => m.IsServed, listItemsIsServed)
             </div>
         </div>
         <div class="col-md-2">
@@ -105,7 +134,7 @@
                 sign.clearCanvas();
             });
     </script>
-    <script>
+    @*<script>
         function SaveSign() {
 
             var casenumber = '@Model.CaseNo';
@@ -142,7 +171,7 @@
             //var url = 'Url.Action("Login", "Account")';
             window.location.href = "../Account/Login";
         }
-    </script>
+    </script>*@
 
 }
 

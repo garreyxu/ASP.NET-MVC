@@ -92,18 +92,6 @@ namespace PoliceServeSystem.DAL
                 served.ServedDate = Convert.ToDateTime(sqlDataReader["ServedDate"]);
                 served.ServedBy = Convert.ToString(sqlDataReader["ServedBy"]);
                 served.IsServed = Convert.ToString(sqlDataReader["IsServed"]);
-                //switch ((string)sqlDataReader["IsServed"])
-                //{
-                //    case "Yes":
-                //        served.IsServed = "1";
-                //        break;
-                //    case "No":
-                //        served.IsServed = "2";
-                //        break;
-                //    default:
-                //        served.IsServed = "0";
-                //        break;
-                //}
                 served.Result = Convert.ToString(sqlDataReader["Result"]);
             }
             else
