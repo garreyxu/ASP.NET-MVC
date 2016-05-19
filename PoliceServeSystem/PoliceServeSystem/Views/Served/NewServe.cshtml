@@ -59,37 +59,17 @@
         <h3>Serve Status</h3>
     </div>
     <div class="row">
-        <div class="col-md-2">
-            <div class="form-group">
-                <label>WarrantNo</label>
-                @Html.TextBoxFor(m => m.WarrantNo, new { @class = "form-control", disabled = "disabled" })
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label>Serve Attempt#</label>
-                @Html.TextBoxFor(m => m.ServedTimes, new { @class = "form-control", disabled = "disabled" })
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="form-group">
-                <label>Result</label>
-                @Html.DropDownListFor(m => m.IsServed, listItemsResult)
-            </div>
-        </div>
-        <div class="col-sm-1">
-            <div class="form-group">
-                <label>Served</label>
-                @Html.DropDownListFor(m => m.IsServed, listItemsIsServed)
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label>Served By</label>
-                @Html.TextBoxFor(m => m.ServedBy, new { @class = "form-control" })
-            </div>
+        <div class="form-group">
+            <label>WarrantNo</label>
+            @Html.TextBoxFor(m => m.WarrantNo, new {disabled = "disabled" })
+            <label>Serve Attempt#</label>
+            @Html.TextBoxFor(m => m.ServedTimes, new { disabled = "disabled", style = "width: 50px" })
+            <label>Result</label>
+            @Html.DropDownListFor(m => m.IsServed, listItemsResult)
+            <label>Served</label>
+            @Html.DropDownListFor(m => m.IsServed, listItemsIsServed)
+            <label>Served By</label>
+            @Html.TextBoxFor(m => m.ServedBy)
         </div>
     </div>
     <div class="row">
