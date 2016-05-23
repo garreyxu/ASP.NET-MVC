@@ -65,11 +65,12 @@ namespace PoliceServeSystem.DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.AddWithValue("@WarrantNo", ssd.WarrantNo);
-                        cmd.Parameters.AddWithValue("@IsServed", ssd.IsServed);
-                        cmd.Parameters.AddWithValue("@ServedDate", DateTime.Now);
-                        cmd.Parameters.AddWithValue("@ServedBy", ssd.ServedBy);
-                        cmd.Parameters.AddWithValue("@Result", ssd.Result);
+                        cmd.Parameters.Add("@WarrantNo", SqlDbType.VarChar, 50).Value = ssd.WarrantNo;
+                        cmd.Parameters.Add("@IsServed", SqlDbType.VarChar, 10).Value = ssd.IsServed;
+                        cmd.Parameters.Add("@ServedDate", SqlDbType.DateTime).Value = ssd.ServedDate;
+                        cmd.Parameters.Add("@ServedBy", SqlDbType.VarChar, 20).Value = ssd.ServedBy;
+                        cmd.Parameters.Add("@Result", SqlDbType.VarChar, 100).Value = ssd.Result;
+                        cmd.Parameters.Add("@SignatureValue", SqlDbType.VarChar, 8000).Value = ssd.SignatureValue;
 
                         cmd.ExecuteNonQuery();
                         //Add save successfully info
@@ -93,6 +94,7 @@ namespace PoliceServeSystem.DAL
                 served.ServedBy = Convert.ToString(sqlDataReader["ServedBy"]);
                 served.IsServed = Convert.ToString(sqlDataReader["IsServed"]);
                 served.Result = Convert.ToString(sqlDataReader["Result"]);
+                served.SignatureValue = Convert.ToString(sqlDataReader["SignatureValue"]);
             }
             else
             {
@@ -101,6 +103,7 @@ namespace PoliceServeSystem.DAL
                 served.ServedBy = string.Empty;
                 served.IsServed = "0";
                 served.Result = string.Empty;
+                served.SignatureValue = string.Empty;
             }
 
             _accusedInfoDataAdapter.Materialize(served.AccusedInfo, sqlDataReader);

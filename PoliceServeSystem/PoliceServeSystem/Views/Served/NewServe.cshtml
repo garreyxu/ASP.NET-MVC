@@ -58,39 +58,39 @@
     <div class="row">
         <h3>Serve Status</h3>
     </div>
-    <div class="row">
-        <div class="form-group">
-            <label>WarrantNo</label>
-            @Html.TextBoxFor(m => m.WarrantNo, new {disabled = "disabled" })
-            <label>Serve Attempt#</label>
-            @Html.TextBoxFor(m => m.ServedTimes, new { disabled = "disabled", style = "width: 50px" })
-            <label>Result</label>
-            @Html.DropDownListFor(m => m.IsServed, listItemsResult)
-            <label>Served</label>
-            @Html.DropDownListFor(m => m.IsServed, listItemsIsServed)
-            <label>Served By</label>
-            @Html.TextBoxFor(m => m.ServedBy)
+    <form class="sigPad" name="input" action="@Url.Action("NewServe", "Served")" method="post">
+        <div class="row">
+            <div class="form-group">
+                <label>WarrantNo</label>
+                @Html.TextBoxFor(m => m.WarrantNo)
+                <label>Serve Attempt#</label>
+                @Html.TextBoxFor(m => m.ServedTimes, new { disabled = "disabled", style = "width: 50px" })
+                <label>Result</label>
+                @Html.DropDownListFor(m => m.Result, listItemsResult)
+                <label>Served</label>
+                @Html.DropDownListFor(m => m.IsServed, listItemsIsServed)
+                <label>Served By</label>
+                @Html.TextBoxFor(m => m.ServedBy)
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="form-group">
-            <label>Accused Sign</label>
-            <div class="modal-body">
-                <form class="sigPad" id="JudgeSign">
+        <div class="row">
+            <div class="form-group">
+                <label>Accused Sign</label>
+                <div class="modal-body">
                     <canvas class="pad" width="500" height="200" id="signCanvas" style="border: 1px solid grey;"></canvas>
-                    <input type="hidden" name="output" class="output" id="signHdn0">
-                </form>
+                    <input type="hidden" name="SignatureValue" class="output" id="signHdn0">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="form-horizontal">
-                <input id="btnClear" type="button" value="Clear" class="btn btn-info" />
-                <input type="submit" value="Save" class="btn btn-success" />
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-horizontal">
+                    <input id="btnClear" type="button" value="Clear" class="btn btn-info" />
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 @section scripts{
     <script src="~/Content/assets/plugins/jquery-1.10.2.min.js"></script>

@@ -34,6 +34,8 @@ namespace PoliceServeSystem.ViewModels
         public string OffenseName { get; set; }
         public string OffenseType { get; set; }
         public bool IfHasCaseRecord { get; set; }
+        public string SignatureValue { get; set; }
+
         #endregion
 
         #region Constructor
@@ -58,6 +60,7 @@ namespace PoliceServeSystem.ViewModels
             OffenseName = string.Empty;
             OffenseType = string.Empty;
             IfHasCaseRecord = true;
+            SignatureValue = String.Empty;
         }
         #endregion
 

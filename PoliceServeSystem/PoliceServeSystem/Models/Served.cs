@@ -10,6 +10,7 @@ namespace PoliceServeSystem.Models
         public string Result { get; set; }
         public string ServedBy { get; set; }
         public string IsServed { get; set; }
+        public string SignatureValue { get; set; }
 
         public AccusedInfo AccusedInfo { get; set; }
 

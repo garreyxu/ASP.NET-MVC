@@ -28,7 +28,8 @@ namespace PoliceServeSystem.Builders
                 ServedDate = served.ServedDate,
                 IsServed = served.IsServed,
                 Result = served.Result,
-                ServedBy = served.ServedBy
+                ServedBy = served.ServedBy,
+                SignatureValue = served.SignatureValue,
 
             };
             
