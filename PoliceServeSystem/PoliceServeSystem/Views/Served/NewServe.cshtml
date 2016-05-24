@@ -63,7 +63,7 @@
                 <label>WarrantNo</label>
                 @Html.TextBoxFor(m => m.WarrantNo)
                 <label>Serve Attempt#</label>
-                @Html.TextBoxFor(m => m.ServedTimes, new { disabled = "disabled", style = "width: 50px" })
+                @Html.TextBoxFor(m => m.ServedTimes, new {disabled = "disabled", style = "width: 50px"})
                 <label>Result</label>
                 @Html.DropDownListFor(m => m.Result, listItemsResult)
                 <label>Served</label>
@@ -86,12 +86,15 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="form-horizontal">
-                    <input id="btnClear" type="button" value="Clear" class="btn btn-info" />
-                    <input type="submit" value="Save" class="btn btn-success" />
+                    <input id="btnClear" type="button" value="Clear" class="btn btn-info"/>
+                    <input type="submit" value="Save" class="btn btn-success"/>
                 </div>
             </div>
         </div>
     </form>
+    <div>
+        @Html.ActionLink("Log Off", "Login", "Account")
+    </div>
 </div>
 @section scripts{
     <script src="~/Content/assets/plugins/jquery-1.10.2.min.js"></script>

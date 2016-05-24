@@ -105,15 +105,15 @@
         </div>
         <div class="row">
             <label>Street</label>
-            @Html.TextBoxFor(model => model.AccusedStreet, new {disabled = "disable"})
+            @Html.TextBoxFor(model => model.AccusedStreet, new { disabled = "disable" })
             <label>City</label>
-            @Html.TextBoxFor(model => model.AccusedCity, new {disabled = "disable", style = "width:150px"})
+            @Html.TextBoxFor(model => model.AccusedCity, new { disabled = "disable", style = "width:150px" })
             <label>State</label>
-            @Html.TextBoxFor(model => model.AccusedState, new {disabled = "disable", style = "width:50px"})
+            @Html.TextBoxFor(model => model.AccusedState, new { disabled = "disable", style = "width:50px" })
             <label>Zip</label>
-            @Html.TextBoxFor(model => model.AccusedZip, new {disabled = "disable", style = "width:80px"})
+            @Html.TextBoxFor(model => model.AccusedZip, new { disabled = "disable", style = "width:80px" })
             <label>Tel</label>
-            @Html.TextBoxFor(model => model.AccusedTel, new {disabled = "disable", style = "width:100px"})
+            @Html.TextBoxFor(model => model.AccusedTel, new { disabled = "disable", style = "width:100px" })
         </div>
         <div class="row">
             <h3>Offense Info</h3>
@@ -151,6 +151,9 @@
             <div class="col-ms-5">
                 <div class="form-group">
                     @Html.ActionLink("Edit", "NewServe", new { WarrantNo = ViewBag.EditWarrantNo })
+                </div>
+                <div class="form-group">
+                    @Html.ActionLink("Log Off", "Login", "Account")
                 </div>
             </div>
         </div>
