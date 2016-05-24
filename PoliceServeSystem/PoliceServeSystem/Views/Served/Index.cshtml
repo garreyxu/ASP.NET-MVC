@@ -54,16 +54,20 @@
 @model PoliceServeSystem.ViewModels.ServedStatusDetail
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        var p = $('#signPad1').signaturePad({
-            drawOnly: true,
-            penColour: 'black'
+    $(document)
+        .ready(function() {
+            var p = $('#signPad1')
+                .signaturePad({
+                    drawOnly: true,
+                    penColour: 'black'
+                });
+            $("#btnClear")
+                .click(function() {
+                    p.clearCanvas();
+                });
         });
-        $("#btnClear").click(function () {
-            p.clearCanvas();
-        });
-    });
 </script>
+
 @using (Html.BeginForm())
 {
     <div>
@@ -139,6 +143,8 @@
                 @Html.DropDownListFor(m => m.IsServed, listItemsIsServed, new { disabled = "disable" })
                 <label>Served By</label>
                 @Html.TextBoxFor(model => model.ServedBy, new { disabled = "disable" })
+                <label>Comments</label>
+                @Html.TextAreaFor(model => model.Comments, new { disabled = "disable" })
             </div>
         </div>
         <div class="row">

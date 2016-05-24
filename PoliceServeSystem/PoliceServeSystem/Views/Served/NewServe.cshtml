@@ -52,7 +52,6 @@
     };
 }
 <link href="~/Content/css/jquery.signaturepad.css" rel="stylesheet" type="text/css" />
-@*<link href="~/Content/css/jquery.signature.css" rel="stylesheet" type="text/css" />*@
 
 <div>
     <div class="row">
@@ -71,6 +70,8 @@
                 @Html.DropDownListFor(m => m.IsServed, listItemsIsServed)
                 <label>Served By</label>
                 @Html.TextBoxFor(m => m.ServedBy)
+                <label>Comments</label>
+                @Html.TextAreaFor(m => m.Comments)
             </div>
         </div>
         <div class="row">
@@ -114,45 +115,6 @@
                 sign.clearCanvas();
             });
     </script>
-    @*<script>
-        function SaveSign() {
-
-            var casenumber = '@Model.CaseNo';
-            $.ajax({
-                url: '@Url.Action("SaveSign", "Served")',
-                type: 'POST',
-                cache: false,
-                data: { sign: sign, CaseN: '@Model.CaseNo', SignMode: id, AccusedNo: "1", OffenseNo: "1" },
-                success: function (result) {
-                    if (result === "SignOut") { SignOut(); return false; }
-                    if (result === false) {
-                        document.getElementById("lblNotifyMsg").innerText = "Data is not saved : Error in saving data.";
-                        $("#SaveValidation").modal({ show: true });
-                    }
-                    else {
-                        if (id === 0) {
-                            for (var ii = 0; ii < $("table.OffenseTable tbody tr td label").length; ii++) {
-                                $("table.OffenseTable tbody tr td label")[ii].innerText = "Issued";
-                            }
-                            $('#JudgeSign').signaturePad().clearCanvas();
-                        }
-                        else {
-                            $('#OffecerSign').signaturePad().clearCanvas();
-                        }
-                        document.getElementById("lblNotifyMsg").innerText = 'Saved successfully : For Case No - ' + casenumber + '.';
-                        $("#SaveValidation").modal({ show: true });
-                    }
-                    return false;
-                }
-            });
-        }
-
-        function SignOut() {
-            //var url = 'Url.Action("Login", "Account")';
-            window.location.href = "../Account/Login";
-        }
-    </script>*@
-
 }
 
 

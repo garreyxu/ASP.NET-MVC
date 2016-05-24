@@ -66,11 +66,12 @@ namespace PoliceServeSystem.DAL
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         cmd.Parameters.Add("@WarrantNo", SqlDbType.VarChar, 50).Value = ssd.WarrantNo;
-                        cmd.Parameters.Add("@IsServed", SqlDbType.VarChar, 10).Value = ssd.IsServed;
+                        cmd.Parameters.Add("@IsServed", SqlDbType.VarChar, 10).Value = ssd.SignatureValue != null ? "Yes" : "No";
                         cmd.Parameters.Add("@ServedDate", SqlDbType.DateTime).Value = ssd.ServedDate;
                         cmd.Parameters.Add("@ServedBy", SqlDbType.VarChar, 20).Value = ssd.ServedBy;
                         cmd.Parameters.Add("@Result", SqlDbType.VarChar, 100).Value = ssd.Result;
                         cmd.Parameters.Add("@SignatureValue", SqlDbType.VarChar, 8000).Value = ssd.SignatureValue;
+                        cmd.Parameters.Add("@Comments", SqlDbType.VarChar, 1000).Value = ssd.Comments;
 
                         cmd.ExecuteNonQuery();
                         //Add save successfully info
@@ -94,7 +95,7 @@ namespace PoliceServeSystem.DAL
                 served.ServedBy = Convert.ToString(sqlDataReader["ServedBy"]);
                 served.IsServed = Convert.ToString(sqlDataReader["IsServed"]);
                 served.Result = Convert.ToString(sqlDataReader["Result"]);
-                served.SignatureValue = Convert.ToString(sqlDataReader["SignatureValue"]);
+                served.Comments = Convert.ToString(sqlDataReader["Comments"]);
             }
             else
             {
@@ -104,6 +105,7 @@ namespace PoliceServeSystem.DAL
                 served.IsServed = "0";
                 served.Result = string.Empty;
                 served.SignatureValue = string.Empty;
+                served.Comments = string.Empty;
             }
 
             _accusedInfoDataAdapter.Materialize(served.AccusedInfo, sqlDataReader);

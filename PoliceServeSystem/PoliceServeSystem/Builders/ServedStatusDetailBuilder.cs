@@ -30,6 +30,7 @@ namespace PoliceServeSystem.Builders
                 Result = served.Result,
                 ServedBy = served.ServedBy,
                 SignatureValue = served.SignatureValue,
+                Comments = served.Comments,
 
             };
             

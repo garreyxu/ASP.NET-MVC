@@ -3,14 +3,7 @@ using PoliceServeSystem.Models;
 using PoliceServeSystem.ViewModels;
 using System.Web.Mvc;
 using PoliceServeSystem.Builders;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Globalization;
-using System.Web.Script.Serialization;
-using PoliceServeSystem.App_Data;
-using PoliceServeSystem.Helper;
 
 namespace PoliceServeSystem.Controllers
 {    
@@ -85,83 +78,83 @@ namespace PoliceServeSystem.Controllers
             return null;
         }
 
-        public JsonResult SaveSign(string sign, string caseNo, string signMode, string accusedNo, string offenseNo)
-        {
-            if (signMode == null) throw new ArgumentNullException(nameof(signMode));
+        //public JsonResult SaveSign(string sign, string caseNo, string signMode, string accusedNo, string offenseNo)
+        //{
+        //    if (signMode == null) throw new ArgumentNullException(nameof(signMode));
 
-            Bitmap signatureImage = SigJsonToImage(sign);
+        //    Bitmap signatureImage = SigJsonToImage(sign);
 
-            signMode = "9";
+        //    signMode = "9";
 
-            SignatureBase signature = new SignatureBase
-            {
-                Caseno = caseNo,
-                Signmode = signMode,
-                SignTime = (CommonRoutines.DbServerDateTime).ToString(CultureInfo.CurrentCulture),
-                SignatureBytes = CommonRoutines.ImageToByteArray(signatureImage),
-                SignatureString = "",
-                UserID = Tools.GetUserId
-            };
+        //    SignatureBase signature = new SignatureBase
+        //    {
+        //        Caseno = caseNo,
+        //        Signmode = signMode,
+        //        SignTime = (CommonRoutines.DbServerDateTime).ToString(CultureInfo.CurrentCulture),
+        //        SignatureBytes = CommonRoutines.ImageToByteArray(signatureImage),
+        //        SignatureString = "",
+        //        UserID = Tools.GetUserId
+        //    };
 
-            SignatureBaseDal signaturedalfile = new SignatureBaseDal();
+        //    SignatureBaseDal signaturedalfile = new SignatureBaseDal();
 
-            var flag = signaturedalfile.Net_InsertSignature(signature);
+        //    var flag = signaturedalfile.Net_InsertSignature(signature);
 
-            try
-            {
-                signatureImage.Dispose();
-            }
-            catch (Exception)
-            {
-                //ignored;
-            }
+        //    try
+        //    {
+        //        signatureImage.Dispose();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //ignored;
+        //    }
 
-            return Json(flag, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(flag, JsonRequestBehavior.AllowGet);
+        //}
 
-        public Bitmap SigJsonToImage(string json)
-        {
-            Bitmap signatureImage1 = null;
-            try
-            {
-                signatureImage1 = GetBlankCanvas();
-                if (!string.IsNullOrEmpty(json))
-                {
-                    using (var signatureGraphic = Graphics.FromImage(signatureImage1))
-                    {
-                        signatureGraphic.SmoothingMode = SmoothingMode.AntiAlias;
-                        PenColor = Color.Black;
-                        PenWidth = (float)2.0;
-                        var pen = new Pen(PenColor, PenWidth);
-                        var serializer = new JavaScriptSerializer();
-                        // Next line may throw System.ArgumentException if the string
-                        // is an invalid json primitive for the SignatureLine structure
-                        var lines = serializer.Deserialize<List<SignatureLine>>(json);
-                        foreach (var line in lines)
-                        {
-                            signatureGraphic.DrawLine(pen, line.Lx, line.Ly, line.Mx, line.My);
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-            return signatureImage1;
-        }
+        //public Bitmap SigJsonToImage(string json)
+        //{
+        //    Bitmap signatureImage1 = null;
+        //    try
+        //    {
+        //        signatureImage1 = GetBlankCanvas();
+        //        if (!string.IsNullOrEmpty(json))
+        //        {
+        //            using (var signatureGraphic = Graphics.FromImage(signatureImage1))
+        //            {
+        //                signatureGraphic.SmoothingMode = SmoothingMode.AntiAlias;
+        //                PenColor = Color.Black;
+        //                PenWidth = (float)2.0;
+        //                var pen = new Pen(PenColor, PenWidth);
+        //                var serializer = new JavaScriptSerializer();
+        //                // Next line may throw System.ArgumentException if the string
+        //                // is an invalid json primitive for the SignatureLine structure
+        //                var lines = serializer.Deserialize<List<SignatureLine>>(json);
+        //                foreach (var line in lines)
+        //                {
+        //                    signatureGraphic.DrawLine(pen, line.Lx, line.Ly, line.Mx, line.My);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        // ignored
+        //    }
+        //    return signatureImage1;
+        //}
 
-        private Bitmap GetBlankCanvas()
-        {
-            //  var blankImage = new Bitmap(400, 80);
-            var blankImage = new Bitmap(500, 200);
-            blankImage.MakeTransparent();
-            using (var signatureGraphic = Graphics.FromImage(blankImage))
-            {
-                BackgroundColor = Color.White;
-                signatureGraphic.Clear(BackgroundColor);
-            }
-            return blankImage;
-        }
+        //private Bitmap GetBlankCanvas()
+        //{
+        //    //  var blankImage = new Bitmap(400, 80);
+        //    var blankImage = new Bitmap(500, 200);
+        //    blankImage.MakeTransparent();
+        //    using (var signatureGraphic = Graphics.FromImage(blankImage))
+        //    {
+        //        BackgroundColor = Color.White;
+        //        signatureGraphic.Clear(BackgroundColor);
+        //    }
+        //    return blankImage;
+        //}
     }
 }
