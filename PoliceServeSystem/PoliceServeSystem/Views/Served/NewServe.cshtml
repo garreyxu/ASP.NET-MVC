@@ -70,8 +70,12 @@
                 @Html.DropDownListFor(m => m.IsServed, listItemsIsServed)
                 <label>Served By</label>
                 @Html.TextBoxFor(m => m.ServedBy)
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
                 <label>Comments</label>
-                @Html.TextAreaFor(m => m.Comments)
+                @Html.TextAreaFor(model => model.Comments, new { disabled = "disable", rows = "5", cols = "200" })
             </div>
         </div>
         <div class="row">

@@ -92,28 +92,32 @@
             <h3>Accused Info</h3>
         </div>
         <div class="row">
-            <label>CaseNo</label>
-            @Html.TextBoxFor(model => model.CaseNo, new { disabled = "disable", style = "width:100px" })
-            <label>AccusedNo</label>
-            @Html.TextBoxFor(model => model.AccusedNo, new { disabled = "disable", style = "width:50px" })
-            <label>First Name</label>
-            @Html.TextBoxFor(model => model.AccusedFirstName, new { disabled = "disable", style = "width:100px" })
-            <label>Last Name</label>
-            @Html.TextBoxFor(model => model.AccusedLastName, new { disabled = "disable", style = "width:100px" })
-            <label>Middel Name</label>
-            @Html.TextBoxFor(model => model.AccusedMiddleName, new { disabled = "disable", style = "width:100px" })
+            <div class="form-group">
+                <label>CaseNo</label>
+                @Html.TextBoxFor(model => model.CaseNo, new { disabled = "disable", style = "width:100px" })
+                <label>AccusedNo</label>
+                @Html.TextBoxFor(model => model.AccusedNo, new { disabled = "disable", style = "width:50px" })
+                <label>First Name</label>
+                @Html.TextBoxFor(model => model.AccusedFirstName, new { disabled = "disable", style = "width:100px" })
+                <label>Last Name</label>
+                @Html.TextBoxFor(model => model.AccusedLastName, new { disabled = "disable", style = "width:100px" })
+                <label>Middel Name</label>
+                @Html.TextBoxFor(model => model.AccusedMiddleName, new { disabled = "disable", style = "width:100px" })
+            </div>
         </div>
         <div class="row">
-            <label>Street</label>
-            @Html.TextBoxFor(model => model.AccusedStreet, new { disabled = "disable" })
-            <label>City</label>
-            @Html.TextBoxFor(model => model.AccusedCity, new { disabled = "disable", style = "width:150px" })
-            <label>State</label>
-            @Html.TextBoxFor(model => model.AccusedState, new { disabled = "disable", style = "width:50px" })
-            <label>Zip</label>
-            @Html.TextBoxFor(model => model.AccusedZip, new { disabled = "disable", style = "width:80px" })
-            <label>Tel</label>
-            @Html.TextBoxFor(model => model.AccusedTel, new { disabled = "disable", style = "width:100px" })
+            <div class="form-group">
+                <label>Street</label>
+                @Html.TextBoxFor(model => model.AccusedStreet, new { disabled = "disable" })
+                <label>City</label>
+                @Html.TextBoxFor(model => model.AccusedCity, new { disabled = "disable", style = "width:150px" })
+                <label>State</label>
+                @Html.TextBoxFor(model => model.AccusedState, new { disabled = "disable", style = "width:50px" })
+                <label>Zip</label>
+                @Html.TextBoxFor(model => model.AccusedZip, new { disabled = "disable", style = "width:80px" })
+                <label>Tel</label>
+                @Html.TextBoxFor(model => model.AccusedTel, new { disabled = "disable", style = "width:100px" })
+            </div>
         </div>
         <div class="row">
             <h3>Offense Info</h3>
@@ -134,17 +138,21 @@
         <div class="row">
             <div class="form-group">
                 <label>Served Times</label>
-                @Html.TextBoxFor(model => model.ServedTimes, new { disabled = "disable", style = "width:50px" })
+                @Html.TextBoxFor(model => model.ServedTimes, new {disabled = "disable", style = "width:50px"})
                 <label>Served Date</label>
-                @Html.TextBoxFor(model => model.ServedDate, new { disabled = "disable" })
+                @Html.TextBoxFor(model => model.ServedDate, new {disabled = "disable"})
                 <label>Result</label>
-                @Html.DropDownListFor(m => m.Result, listItemsResult, new { disabled = "disable" })
+                @Html.DropDownListFor(m => m.Result, listItemsResult, new {disabled = "disable"})
                 <label>Served</label>
-                @Html.DropDownListFor(m => m.IsServed, listItemsIsServed, new { disabled = "disable" })
+                @Html.DropDownListFor(m => m.IsServed, listItemsIsServed, new {disabled = "disable"})
                 <label>Served By</label>
-                @Html.TextBoxFor(model => model.ServedBy, new { disabled = "disable" })
+                @Html.TextBoxFor(model => model.ServedBy, new {disabled = "disable"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
                 <label>Comments</label>
-                @Html.TextAreaFor(model => model.Comments, new { disabled = "disable" })
+                @Html.TextAreaFor(model => model.Comments, new { disabled = "disable", rows = "5", cols = "200" })
             </div>
         </div>
         <div class="row">
