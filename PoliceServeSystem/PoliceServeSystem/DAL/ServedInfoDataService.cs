@@ -70,7 +70,14 @@ namespace PoliceServeSystem.DAL
                         cmd.Parameters.Add("@ServedDate", SqlDbType.DateTime).Value = ssd.ServedDate;
                         cmd.Parameters.Add("@ServedBy", SqlDbType.VarChar, 20).Value = ssd.ServedBy;
                         cmd.Parameters.Add("@Result", SqlDbType.VarChar, 100).Value = ssd.Result;
-                        cmd.Parameters.Add("@SignatureValue", SqlDbType.VarChar, 8000).Value = ssd.SignatureValue;
+                        if (ssd.SignatureValue != null)
+                        {
+                            cmd.Parameters.Add("@SignatureValue", SqlDbType.VarChar, 8000).Value = ssd.SignatureValue;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("@SignatureValue", SqlDbType.VarChar, 8000).Value = DBNull.Value;
+                        }
                         cmd.Parameters.Add("@Comments", SqlDbType.VarChar, 1000).Value = ssd.Comments;
 
                         cmd.ExecuteNonQuery();

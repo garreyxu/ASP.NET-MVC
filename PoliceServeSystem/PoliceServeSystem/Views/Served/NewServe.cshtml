@@ -87,7 +87,7 @@
             <div class="col-md-2">
                 <div class="form-horizontal">
                     <input id="btnClear" type="button" value="Clear" class="btn btn-info"/>
-                    <input type="submit" value="Save" class="btn btn-success"/>
+                    <input type="submit" value="Save" class="btn btn-success" />
                 </div>
             </div>
         </div>
@@ -108,7 +108,8 @@
                 sign = $('.sigPad')
                     .signaturePad({
                         drawOnly: true,
-                        penColour: 'black'
+                        penColour: 'black',
+                        validateFields: false
                     });
             });
 
