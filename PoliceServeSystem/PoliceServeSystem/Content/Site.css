@@ -1,6 +1,8 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +23,37 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+hr {
+    height: 1px;
+    border: 0;
+    margin-top: 3px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: inset 0 1px 1px 1px #000000;
+    -moz-box-shadow: inset 0 1px 1px 1px #000000;
+    -ms-box-shadow: inset 0 1px 1px 1px #000000;
+    box-shadow: inset 0 1px 1px 1px #000000;
+}
+
+td {
+    padding-left: 0.5cm;
+    padding-right: 0.5cm;
+}
+
+label {
+    padding-right: 0.3cm;
+}
+
+.textbox {
+    border-radius: 3px;
+    padding-right: 0.3cm;
+}
+
+.textarea {
+    border-radius: 3px;
+}
+
+.dropdownlist {
+    border-radius: 3px;
 }
