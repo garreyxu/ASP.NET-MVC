@@ -18,71 +18,28 @@ namespace PoliceServeSystem.Controllers
             return View();
         }
 
-        public JsonResult LoginTemp(string loginId, string pwd)
-        {
-            if (loginId == null || loginId.Trim() == "")
-            {
-                ModelState.AddModelError("", "Enter Username");
-                return Json("Enter Username", JsonRequestBehavior.AllowGet);
-            }
-            if (pwd == null || pwd.Trim() == "")
-            {
-                ModelState.AddModelError("", "Enter Password");
-                return Json("Enter Password", JsonRequestBehavior.AllowGet);
-            }
-
-            //=================Form Authentication For User==========================
-            Users user;
-            NetGetUsersDal usersdalfile = new NetGetUsersDal();
-            user = usersdalfile.GetUser(loginId, pwd);
-
-            if (user == null)
-            {
-                return Json("Username or Password is invalid", JsonRequestBehavior.AllowGet);
-            }
-
-            try
-            {
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                string userJson = js.Serialize(user);
-                FormsAuthenticationTicket userTicket = new FormsAuthenticationTicket(1,
-                                                            loginId,
-                                                            DateTime.Now, DateTime.Now.Add(FormsAuthentication.Timeout),
-                                                            true,
-                                                            userJson);
-                string encryptedTicket = FormsAuthentication.Encrypt(userTicket);
-
-                HttpCookie ticketCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                Response.Cookies.Add(ticketCookie);
-            }
-            catch (Exception)
-            {
-                return Json("Error in authentication", JsonRequestBehavior.AllowGet);
-            }
-
-            //if (Tools.GetUserId != 0)
-            return Json(true, JsonRequestBehavior.AllowGet);
-            //else
-            //    return Json("Username or Password is invalid", JsonRequestBehavior.AllowGet);
-        }
-
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
-            var userObj = new Users
+            if (model.UserName == null || model.UserName.Trim() == "")
             {
-                Userid = Tools.GetUserId,
-                NotificationType = model.NotificationType
-            };
+                ModelState.AddModelError("", "Enter Username");
+                return View(model);
+            }
+            if (model.Password == null || model.Password.Trim() == "")
+            {
+                ModelState.AddModelError("", "Enter Password");
+                return View(model);
+            }
 
             UsersDal usersdalfile = new UsersDal();
-            usersdalfile.UpdateNotificationType(userObj);
+            var user = usersdalfile.Load(model.UserName, model.Password);
 
-            userObj.LoginId = model.UserName;
-            userObj.Password = model.Password;
-            usersdalfile.Load(model.UserName, model.Password);
-
-            //model.ModuleType = Tools.UserRole;
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Username or Password is invalid");
+                return View(model);
+            }
 
             try
             {

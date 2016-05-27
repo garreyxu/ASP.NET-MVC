@@ -17,11 +17,11 @@ namespace PoliceServeSystem.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required]
-        [Display(Name = "Module")]
-        public string ModuleType { get; set; }
+        //[Required]
+        //[Display(Name = "Module")]
+        //public string ModuleType { get; set; }
 
-        [Required]
-        public string NotificationType { get; set; }
+        //[Required]
+        //public string NotificationType { get; set; }
     }
 }

@@ -71,50 +71,8 @@
 
                 </div>
             </div>
-            @*<div class="form-group">
-                    <div class="input-group margin-top-10">
-                        <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                        @Html.DropDownListFor(model => model.ModuleType, new List<SelectListItem> {
-                       new SelectListItem { Text = "Quick Entry", Value = "Quick Entry" },
-                       new SelectListItem { Text = "Judge Module", Value = "Judge Module" } },
-                       "Select Module", new { @class = "form-control" })
-                    </div>
-                </div>*@
             <div class="form-actions">
-                <button type="button" class="btn green pull-right" id="btnLogin" onclick="return false">
-                    Login <i class="m-icon-swapright m-icon-white"></i>
-                </button>
-
-            </div>
-
-            <div id="stack1" class="modal fade in" tabindex="-1" data-width="400" aria-hidden="false">
-
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                            <h4 class="modal-title">Method of warrant request notification</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>Select notification type</h4>
-                                    <p>
-                                        @Html.DropDownListFor(model => model.NotificationType, new List<SelectListItem> {
-                                                                                    new SelectListItem { Text = "None", Value = "None" },
-                                               new SelectListItem { Text = "Email", Value = "Email" },
-                                               new SelectListItem { Text = "Text Message", Value = "Text Message" }
-                                                }, new { @class = "col-md-12 form-control" })
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn red" name="action:Save">Ok</button>
-                            <button type="button" data-dismiss="modal" class="btn">Close</button>
-                        </div>
-                    </div>
-                </div>
+                <button type="submit" class="btn green pull-right" id="btnLogin">Login<i class="m-icon-swapright m-icon-white"></i></button>
             </div>
         </form>
 
@@ -156,30 +114,6 @@
                         event.preventDefault();
                         $("#btnLogin").click();
                     }
-                });
-                $("#btnLogin").click(function(){
-                    $.ajax({
-                        url: '@Url.Action("LoginTemp", "Account")',
-                        type: 'POST',
-                        data: { LoginID: document.getElementById("UserName").value, Pwd: document.getElementById("Password").value },
-                        success: function (result) {
-                            if(result !== true)
-                            {
-                                document.getElementById("lblmsg").innerText = result;
-                            }
-                            else
-                            {
-                                $.ajax({
-                                    url: '@Url.Action("GetNotificationType","Account")',
-                                    type: 'POST',
-                                    success: function (result1) {
-                                        document.getElementById("NotificationType").value = result1.NotificationType;
-                                        $("#stack1").modal({ show: true });
-                                    }
-                                });
-                            }
-                        }
-                    });
                 });
 
                 App.init();

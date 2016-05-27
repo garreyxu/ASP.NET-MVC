@@ -8,30 +8,6 @@ namespace PoliceServeSystem.DAL
 {
     public class UsersDal
     {
-        public bool UpdateNotificationType(Users user)
-        {
-            try
-            {
-                using (SqlConnection sqlCon = GetConnection.GetSqlConnection())
-                {
-                    sqlCon.Open();
-                    using (var cmd = new SqlCommand("UpdateNotificationType", sqlCon))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@UsrID", SqlDbType.Int).Value = user.Userid;
-                        cmd.Parameters.Add("@NotificationType", SqlDbType.VarChar, 50).Value = user.NotificationType;
-
-                        cmd.ExecuteNonQuery();
-                        return true;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
         public Users Load(string loginId, string pwd)
         {
             try

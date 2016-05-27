@@ -146,7 +146,6 @@
     <Compile Include="DAL\DataAdapters\AccusedInfoDataAdapter.cs" />
     <Compile Include="DAL\DataAdapters\IDataAdapter.cs" />
     <Compile Include="DAL\DataAdapters\OffenseInfoDataAdapter.cs" />
-    <Compile Include="DAL\NetGetUsersDal.cs" />
     <Compile Include="DAL\ServedInfoDataService.cs" />
     <Compile Include="DAL\GetConnection.cs" />
     <Compile Include="DAL\IServedInfoDataService.cs" />
