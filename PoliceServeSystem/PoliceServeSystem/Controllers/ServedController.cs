@@ -77,5 +77,10 @@ namespace PoliceServeSystem.Controllers
             ViewBag.Message = "Please enter warrantNo!";
             return null;
         }
+
+        public PartialViewResult CreatePartialViewResult()
+        {
+            return PartialView("Siganture");
+    }
     }
 }

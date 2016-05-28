@@ -143,6 +143,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ServedController.cs" />
     <Compile Include="Builders\IServedStatusDetailBuilder.cs" />
+    <Compile Include="Controllers\SignatureController.cs" />
     <Compile Include="DAL\DataAdapters\AccusedInfoDataAdapter.cs" />
     <Compile Include="DAL\DataAdapters\IDataAdapter.cs" />
     <Compile Include="DAL\DataAdapters\OffenseInfoDataAdapter.cs" />
@@ -1973,12 +1974,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Served\Index.cshtml" />
     <Content Include="Views\Served\NewServe.cshtml" />
-    <Content Include="Views\Signature\Signature.cshtml" />
+    <Content Include="Views\Served\Signature.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Views\Signature\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
