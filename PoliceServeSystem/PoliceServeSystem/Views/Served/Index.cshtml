@@ -131,7 +131,7 @@
             <div>
                 <table>
                     <tr>
-                        <td><label>Served Times</label></td>
+                        <td><label>Served Attempts</label></td>
                         <td>@Html.TextBoxFor(model => model.ServedTimes, new {@class = "textbox", disabled = "disable", style = "width:50px"})</td>
                         <td><label>Result</label></td>
                         <td>@Html.DropDownListFor(m => m.Result, listItemsResult, new {@class = "dropdownlist"})</td>
@@ -172,6 +172,3 @@
     }
 </script>
 }
-
-
-
