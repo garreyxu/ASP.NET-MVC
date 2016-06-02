@@ -142,10 +142,10 @@
                     </tr>
                     <tr>
                         <td><label>Served By</label></td>
-                        <td colspan="3">@Html.TextBoxFor(model => model.ServedBy, new {@class = "textbox"})<br/></td>
+                        <td colspan="3">@Html.TextBoxFor(model => model.ServedBy, new { @class = "textbox" })<br /></td>
                         <td><label>Comments</label></td>
-                        <td colspan="2">@Html.TextAreaFor(model => model.Comments, new {@class = "textarea", rows = "3", cols = "50"})</td>
-                        <td><button class="btn btn-danger" id="AccusedSign">Sign</button></td>
+                        <td colspan="2">@Html.TextAreaFor(model => model.Comments, new { @class = "textarea", rows = "3", cols = "50" })</td>
+                        <td>@Html.ActionLink("Sign", "Signature", "Signature", null, new { @class = "btn btn-danger" })</td>
                     </tr>
                 </table>
             </div>

@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Signature</title>
+    <link href="~/Content/css/jquery.signaturepad.css" rel="stylesheet"/>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td colspan="2">
+                    <form class="sigPad" id="signPad1">
+                        <canvas class="pad" width="400" height="150" style="border: 1px solid grey;"></canvas>
+                        <input type="hidden" name="output" class="output" id="signHdn1">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td align="right"><button type="button" class="btn btn-danger" id="btnClear1">Clear</button></td>
+                <td align="left"><input type="submit" value="Save" class="btn btn-success"/></td>
+            </tr>
+        </table>
+    </div>
+    <script src="~/Content/assets/plugins/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/js/jquery.signaturepad.js"></script>
+    <script src="~/Content/js/json2.js"></script>
+    <script>
+        $(document).ready(function () {
+            var p = $('#signPad1').signaturePad({
+                drawOnly: true,
+                penColour: 'black'
+            });
+
+            $("#btnClear1").click(function () {
+                p.clearCanvas();
+            });
+        });
+    </script>
+
+
+</body>
+</html>
+
