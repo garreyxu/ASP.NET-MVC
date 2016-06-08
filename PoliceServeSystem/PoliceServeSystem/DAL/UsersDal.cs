@@ -67,15 +67,15 @@ namespace PoliceServeSystem.DAL
             user.UserActive = Convert.ToInt16(sqlDataReader["UserActive"]);
             user.IsAgencyExpired = Convert.ToInt16(sqlDataReader["IsAgencyExpired"]);
             user.Agency = Convert.ToString(sqlDataReader["Agency"]);
-            user.NotificationType = Convert.ToString(sqlDataReader["NotificationType"]);
-            if (string.IsNullOrEmpty(user.NotificationType))
-                user.NotificationType = "None";
-            if (string.IsNullOrEmpty(user.AccessLevel.ToString()))
-                user.AccessLevel = 0;
-            if (string.IsNullOrEmpty(user.UserActive.ToString()))
-                user.NotificationType = "0";
-            if (string.IsNullOrEmpty(user.AgencyActive.ToString()))
-                user.NotificationType = "0";
+            //user.NotificationType = Convert.ToString(sqlDataReader["NotificationType"]);
+            //if (string.IsNullOrEmpty(user.NotificationType))
+            //    user.NotificationType = "None";
+            //if (string.IsNullOrEmpty(user.AccessLevel.ToString()))
+            //    user.AccessLevel = 0;
+            //if (string.IsNullOrEmpty(user.UserActive.ToString()))
+            //    user.NotificationType = "0";
+            //if (string.IsNullOrEmpty(user.AgencyActive.ToString()))
+            //    user.NotificationType = "0";
         }
     }
 }
