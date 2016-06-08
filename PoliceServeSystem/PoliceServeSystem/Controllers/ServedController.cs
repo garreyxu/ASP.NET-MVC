@@ -53,7 +53,7 @@ namespace PoliceServeSystem.Controllers
                 {
                     _servedStatusDetailDataService.Save(model);
                     model = GetDetail(model.WarrantNo);
-                    TempData["success"] = "Successfully saved the serve";
+                    TempData["success"] = "Saved successfully!";
                     return RedirectToAction("Index", "Served", model);
                 }
                 else if (command == "saveall")
@@ -61,7 +61,7 @@ namespace PoliceServeSystem.Controllers
                     //Write here code to save info with signature
                     _servedStatusDetailDataService.Save(model);
                     model = GetDetail(model.WarrantNo);
-                    TempData["success"] = "Successfully saved the serve";
+                    TempData["success"] = "Saved successfully!";
                     return RedirectToAction("Index", "Served", model);
                 }
             }

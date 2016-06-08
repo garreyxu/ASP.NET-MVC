@@ -38,7 +38,7 @@ namespace PoliceServeSystem.Controllers
                 return View(model);
             }
 
-            if (HttpContext.Session != null) HttpContext.Session["OfficerName"] = user.FirstName + user.LastName;
+            if (HttpContext.Session != null) HttpContext.Session["OfficerName"] = user.FirstName + " " + user.LastName;
 
             try
             {
