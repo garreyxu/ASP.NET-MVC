@@ -53,29 +53,25 @@
 }
 @model PoliceServeSystem.ViewModels.ServedStatusDetail
 
-<form>
-    <div>
-        @if (TempData["success"] != null)
-        {
-            <p>@TempData["success"]</p>
-        }
-        @Html.ValidationSummary(true)
+
+<div>
+    @if (TempData["success"] != null)
+    {
+        <p>@TempData["success"]</p>
+    }
+    @Html.ValidationSummary(true)
+    <form>
         <div class="row">
             <div class="form-group">
                 <table>
                     <tr>
                         <td><label>WarrantNo</label></td>
-                        <td>@Html.TextBoxFor(model => model.WarrantNo, new {@class = "textbox", style = "width:120px"})</td>
+                        <td>@Html.TextBoxFor(model => model.WarrantNo, new {@class = "textbox", style = "width:120px", name = "warrantNo", id = "warNo"})</td>
                         <td><label>Offense Name</label></td>
                         <td>@Html.TextAreaFor(model => model.OffenseName, new {@class = "textarea", disabled = "disable", style = "width:300px"})</td>
                         <td><label>Type</label></td>
                         <td>@Html.TextBoxFor(model => model.OffenseType, new {@class = "textbox", disabled = "disable", style = "width:80px"})</td>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
                         <td><input type="submit" value="Info" class="btn btn-info"/></td>
-                        <td><input type="reset" value="Reset" text="clear" class="btn btn-success"/></td>
                         <td><input type="button" name="logoff" value="logoff" class="btn btn-primary" onclick="LogOff()"/></td>
                     </tr>
                 </table>
@@ -127,48 +123,111 @@
             </div>
         </div>
         <hr/>
+    </form>
+    <form class="form_details" method="post" action='@Url.Action("Index", "Served")'>
         <div class="row">
             <div>
                 <table>
                     <tr>
                         <td><label>Served Attempts</label></td>
-                        <td>@Html.TextBoxFor(model => model.ServedTimes, new {@class = "textbox", disabled = "disable", style = "width:50px"})</td>
+                        <td>@Html.TextBoxFor(model => model.ServedTimes, new { @class = "textbox", disabled = "disable", style = "width:50px" })</td>
                         <td><label>Result</label></td>
-                        <td>@Html.DropDownListFor(m => m.Result, listItemsResult, new {@class = "dropdownlist"})</td>
+                        <td>@Html.DropDownListFor(m => m.Result, listItemsResult, new { @class = "dropdownlist" })</td>
                         <td><label>Served Date</label></td>
-                        <td>@Html.TextBoxFor(model => model.ServedDate, new {@class = "textbox", disabled = "disable"})</td>
+                        <td>@Html.TextBoxFor(model => model.ServedDate, new { @class = "textbox", disabled = "disable" })</td>
                         <td><label>Served</label></td>
-                        <td>@Html.DropDownListFor(m => m.IsServed, listItemsIsServed, new {@class = "dropdownlist", disabled = "disable"})</td>
+                        <td>@Html.DropDownListFor(m => m.IsServed, listItemsIsServed, new { @class = "dropdownlist", disabled = "disable" })</td>
                     </tr>
                     <tr>
                         <td><label>Served By</label></td>
                         <td colspan="3">@Html.TextBoxFor(model => model.ServedBy, new { @class = "textbox" })<br /></td>
                         <td><label>Comments</label></td>
                         <td colspan="2">@Html.TextAreaFor(model => model.Comments, new { @class = "textarea", rows = "3", cols = "50" })</td>
-                        <td>@Html.ActionLink("Sign", "Signature", "Signature", null, new { @class = "btn btn-danger" })</td>
+                        @*<td>@Html.ActionLink("Sign", "Signature", "Signature", null, new { @class = "btn btn-danger" })</td>*@
                     </tr>
                 </table>
             </div>
         </div>
-    </div>
-</form>
+        <div>
+            <table>
+                <tr>
+                    <td><button type="submit" value="saveaccused" name="command" class="btn btn-success">No Sign Save</button> </td>
+                    <td><button type="button" value="Signature" id="btnSignature" class="btn btn-danger">Sign</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal fade" id="SignatureModal" tabindex="-1" role="basic" aria-hidden="true">
+            @*<div class="modal-dialog modal-wide">*@
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title" style="color:black;"><b>Signature</b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align:center;" id="SignModal">
+                            <canvas class="pad" width="500" height="200" id="signCanvas" style="border: 1px solid grey;"></canvas>
+                            @Html.HiddenFor(x => x.SignatureValue, new { @class = "output" })
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row" style="margin-top:6px;">
+                            <div class="col-md-3 DetailPadding col-sm-3">
+                                <div class="form-group">
+                                    <b></b>
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" name="command" value="saveall">Save</button>
+                                    <button type="button" class="btn btn-primary" id="btnClearSignModal">Clear</button>
+                                    <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </form>
+</div>
 
 @section scripts{
-<script>
-    $(document)
-        .ready(function () {
-            $('#AccusedSign')
-                .on('Click',
-                    function () {
-                        window.open('/Signature/Signature',
-                            '_blank',
-                            'left=100,top=100,width=400,height=300,toolbar=1,resizable=0');
+    <script src="~/Content/js/jquery.signaturepad.js"></script>
+    <script>
+        var sign;
+        $(document)
+            .ready(function () {
+                $('#AccusedSign')
+                    .on('Click',
+                        function () {
+                            window.open('/Signature/Signature',
+                                '_blank',
+                                'left=100,top=100,width=400,height=300,toolbar=1,resizable=0');
+                        });
+                $('.form_details')
+                    .signaturePad({
+                        drawOnly: true,
+                        penColour: 'black',
+                        validateFields: false
                     });
-        });
-</script>
-<script>
-    function LogOff() {
-        window.location.href = "http://18.0.0.7/Serve";
-    }
-</script>
+                $("#btnSignature")
+                    .click(function () {
+                        $("#SignatureModal").modal({ show: true });
+                    });
+            });
+
+        $("#btnClearSignModal")
+            .click(function () {
+                $('.form_details').signaturePad().clearCanvas();
+            });
+
+    </script>
+    <script>
+        function LogOff() {
+            window.location.href = "http://18.0.0.7/Serve";
+        }
+    </script>
 }

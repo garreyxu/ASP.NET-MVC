@@ -4,6 +4,7 @@ using PoliceServeSystem.ViewModels;
 using System.Web.Mvc;
 using PoliceServeSystem.Builders;
 using System.Drawing;
+using System;
 
 namespace PoliceServeSystem.Controllers
 {    
@@ -29,14 +30,51 @@ namespace PoliceServeSystem.Controllers
             _servedStatusDetailDataService = servedStatusDetailDataService;
             _servedStatusDetailBuilder = servedStatusDetailBuilder;
         }
-        
+
         //Get Served
+        [HttpGet]
         public ActionResult Index(string warrantNo)
         {
-            ViewBag.EditWarrantNo = warrantNo;
+            if (HttpContext.Session != null)
+                HttpContext.Session["WarrantNo"] = warrantNo;
             return View(GetDetail(warrantNo));
         }
-        
+
+        [HttpPost]
+        public ActionResult Index(ServedStatusDetail model, string command)
+        {
+            if ((string) HttpContext.Session?["WarrantNo"] != null && (string)HttpContext.Session["WarrantNo"] != "")
+            {
+                model.WarrantNo = (string) HttpContext.Session?["WarrantNo"];
+                if (model.Comments == null)
+                    model.Comments = "";
+                if (model.ServedBy == null)
+                    model.ServedBy = "";
+                if (command == "saveaccused")
+                {
+                    _servedStatusDetailDataService.Save(model);
+                    model = GetDetail(model.WarrantNo);
+                    TempData["success"] = "Successfully saved the serve";
+                    return RedirectToAction("Index", "Served", model);
+                }
+                else if (command == "saveall")
+                {
+                    //Write here code to save info with signature
+                    _servedStatusDetailDataService.Save(model);
+                    model = GetDetail(model.WarrantNo);
+                    TempData["success"] = "Successfully saved the serve";
+                    return RedirectToAction("Index", "Served", model);
+                }
+            }
+            else
+            {
+                TempData["success"] = "Get Case Info first!";
+                return View(model);
+            }
+            TempData["success"] = "Get Case Info first!";
+            return View(model);
+        }
+
         public ActionResult NewServe(string warrantNo)
         {
             return View(GetDetail(warrantNo));
@@ -68,19 +106,14 @@ namespace PoliceServeSystem.Controllers
                 if (served != null)
                 {
                     ServedStatusDetail ssd = _servedStatusDetailBuilder.Build(served);
-
+                    //InputSession(ssd);
                     return ssd;
                 }
-                ViewBag.Message = "Invalid WarrantNo!";
+                TempData["success"] = "Invalid WarrantNo!";
                 return null;
             }
-            ViewBag.Message = "Please enter warrantNo!";
+            TempData["success"] = "Please enter warrantNo!";
             return null;
         }
-
-        public PartialViewResult CreatePartialViewResult()
-        {
-            return PartialView("Siganture");
-    }
     }
 }

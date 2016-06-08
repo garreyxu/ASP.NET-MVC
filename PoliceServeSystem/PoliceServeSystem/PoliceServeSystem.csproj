@@ -1707,6 +1707,7 @@
     <Content Include="Content\css\jquery.signature.css" />
     <Content Include="Content\css\jquery.signaturepad.css" />
     <Content Include="Content\img\ic_launcher.png" />
+    <Content Include="Content\img\logoB2.gif" />
     <Content Include="Content\js\jquery.signaturepad.js" />
     <Content Include="Content\js\jquery.signaturepad.min.js" />
     <Content Include="Content\js\json2.js" />
