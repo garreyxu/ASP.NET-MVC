@@ -57,7 +57,7 @@
 <div>
     @if (TempData["success"] != null)
     {
-        <p>@TempData["success"]</p>
+        <p style="color: #e23535">@TempData["success"]</p>
     }
     @Html.ValidationSummary(true)
     <form>
@@ -67,11 +67,11 @@
                     <tr>
                         <td><label>WarrantNo</label></td>
                         <td>@Html.TextBoxFor(model => model.WarrantNo, new {@class = "textbox", style = "width:120px", name = "warrantNo", id = "warNo"})</td>
+                        <td><input type="submit" value="Search" class="btn btn-info" /></td>
                         <td><label>Offense Name</label></td>
                         <td>@Html.TextAreaFor(model => model.OffenseName, new {@class = "textarea", disabled = "disable", style = "width:300px"})</td>
                         <td><label>Type</label></td>
                         <td>@Html.TextBoxFor(model => model.OffenseType, new {@class = "textbox", disabled = "disable", style = "width:80px"})</td>
-                        <td><input type="submit" value="Info" class="btn btn-info"/></td>
                         <td><input type="button" name="logoff" value="logoff" class="btn btn-primary" onclick="LogOff()"/></td>
                     </tr>
                 </table>
