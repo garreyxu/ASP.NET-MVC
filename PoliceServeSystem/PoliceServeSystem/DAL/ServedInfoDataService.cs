@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
+using System.Web;
 using PoliceServeSystem.Models;
 using PoliceServeSystem.DAL.DataAdapters;
 using PoliceServeSystem.ViewModels;
@@ -68,7 +69,8 @@ namespace PoliceServeSystem.DAL
                         cmd.Parameters.Add("@WarrantNo", SqlDbType.VarChar, 50).Value = ssd.WarrantNo;
                         cmd.Parameters.Add("@IsServed", SqlDbType.VarChar, 10).Value = ssd.SignatureValue != null ? "Yes" : "No";
                         cmd.Parameters.Add("@ServedDate", SqlDbType.DateTime).Value = ssd.ServedDate;
-                        cmd.Parameters.Add("@ServedBy", SqlDbType.VarChar, 20).Value = ssd.ServedBy;
+                        cmd.Parameters.Add("@ServedBy", SqlDbType.VarChar, 20).Value =
+                            (string) HttpContext.Current.Session["OfficerName"];
                         cmd.Parameters.Add("@Result", SqlDbType.VarChar, 100).Value = ssd.Result;
                         if (ssd.SignatureValue != null)
                         {

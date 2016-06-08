@@ -4,7 +4,6 @@ using PoliceServeSystem.ViewModels;
 using System.Web.Mvc;
 using PoliceServeSystem.Builders;
 using System.Drawing;
-using System;
 
 namespace PoliceServeSystem.Controllers
 {    

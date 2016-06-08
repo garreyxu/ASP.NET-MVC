@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Web;
 using System.Web.Mvc;
 using PoliceServeSystem.DAL;
 using PoliceServeSystem.Models;
-using System.Web.Script.Serialization;
-using System.Web.Security;
 using PoliceServeSystem.Helper;
 
 namespace PoliceServeSystem.Controllers
@@ -40,6 +37,8 @@ namespace PoliceServeSystem.Controllers
                 ModelState.AddModelError("", "Username or Password is invalid");
                 return View(model);
             }
+
+            if (HttpContext.Session != null) HttpContext.Session["OfficerName"] = user.FirstName + user.LastName;
 
             try
             {
