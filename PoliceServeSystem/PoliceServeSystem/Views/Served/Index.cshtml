@@ -57,7 +57,7 @@
 <div>
     @if (TempData["success"] != null)
     {
-        <p style="color: #e23535">@TempData["success"]</p>
+        <p>@TempData["success"]</p>
     }
     @Html.ValidationSummary(true)
     <form>
@@ -142,8 +142,8 @@
                         <td><label>Served By</label></td>
                         <td colspan="3">@Html.TextBoxFor(model => model.ServedBy, new { @class = "textbox", disabled = "disable" })<br /></td>
                         <td><label>Comments</label></td>
-                        <td colspan="2">@Html.TextAreaFor(model => model.Comments, new { @class = "textarea", rows = "3", cols = "50" })</td>
-                        @*<td>@Html.ActionLink("Sign", "Signature", "Signature", null, new { @class = "btn btn-danger" })</td>*@
+                        <td colspan="2">@Html.TextAreaFor(model => model.Comments, new {@class = "textarea", rows = "3", cols = "50"})</td>
+                        <td><label style="color:hotpink; font-weight: bold; visibility: hidden" id="servdCase">This case has been served.</label></td>
                     </tr>
                 </table>
             </div>
@@ -229,5 +229,8 @@
         function LogOff() {
             window.location.href = "http://18.0.0.7/Serve";
         }
+    </script>
+    <script>
+        if(document.getElementById)
     </script>
 }
