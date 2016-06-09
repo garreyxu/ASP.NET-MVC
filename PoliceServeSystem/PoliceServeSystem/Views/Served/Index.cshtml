@@ -91,7 +91,7 @@
                             <td>@Html.TextBoxFor(model => model.AccusedFirstName, new { @class = "textbox", disabled = "disable", style = "width:100px" })</td>
                             <td><label>Last Name</label></td>
                             <td colspan="2">@Html.TextBoxFor(model => model.AccusedLastName, new { @class = "textbox", disabled = "disable", style = "width:100px" })</td>
-                            <td><label>Middel Name</label></td>
+                            <td colspan="2"><label>Middel Name</label></td>
                             <td colspan="2">
                                 @Html.TextBoxFor(model => model.AccusedMiddleName, new { @class = "textbox", disabled = "disable", style = "width:100px" })
                             </td>
@@ -99,19 +99,20 @@
                         <tr>
                             <td><label>Street</label></td>
                             <td colspan="2">
-                                @Html.TextBoxFor(model => model.AccusedStreet, new { @class = "textbox", disabled = "disable" })
+                                @Html.TextBoxFor(model => model.AccusedStreet, new {@class = "textbox", disabled = "disable", id="street"})
                             </td>
+                            <td><button id="map" class="btn btn-success">Map</button></td>
                             <td><label>City</label></td>
                             <td colspan="2">
-                                @Html.TextBoxFor(model => model.AccusedCity, new { @class = "textbox", disabled = "disable", style = "width:150px" })
+                                @Html.TextBoxFor(model => model.AccusedCity, new { @class = "textbox", disabled = "disable", style = "width:150px" ,id="city" })
                             </td>
                             <td><label>State</label></td>
                             <td>
-                                @Html.TextBoxFor(model => model.AccusedState, new { @class = "textbox", disabled = "disable", style = "width:50px" })
+                                @Html.TextBoxFor(model => model.AccusedState, new { @class = "textbox", disabled = "disable", style = "width:50px", id="state" })
                             </td>
                             <td><label>Zip</label></td>
                             <td>
-                                @Html.TextBoxFor(model => model.AccusedZip, new { @class = "textbox", disabled = "disable", style = "width:80px" })
+                                @Html.TextBoxFor(model => model.AccusedZip, new { @class = "textbox", disabled = "disable", style = "width:80px", id="zip" })
                             </td>
                             <td><label>Tel</label></td>
                             <td>
@@ -240,6 +241,21 @@
                 } else {
                     $('#servdCase').show();
                 }
+            });
+    </script>
+    <script>
+        var googMap = "https://www.google.com/maps/place/";
+        var street = document.getElementById('street').value;
+        var city = document.getElementById("city").value;
+        var state = document.getElementById("state").value;
+        var zip = document.getElementById("zip").value;
+        var url = googMap + street + ",+" + city + ",+" + state + "+" + zip;
+        $(document)
+            .ready(function() {
+                $('#map')
+                    .click(function() {
+                        window.open(url, "popupWindow", "width=200, heeight=200");
+                    });
             });
     </script>
 }
