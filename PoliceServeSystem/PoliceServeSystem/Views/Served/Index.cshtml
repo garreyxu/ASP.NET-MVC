@@ -124,7 +124,9 @@
         </div>
         <hr/>
     </form>
-    <form class="form_details" method="post" action='@Url.Action("Index", "Served")'>
+    @*<form class="form_details" method="get" action='@Url.Action("Index", "Served")'>*@
+    @using (Html.BeginForm("Index", "Served", FormMethod.Post) )
+    {
         <div class="row">
             <div>
                 <table>
@@ -142,56 +144,59 @@
                         <td><label>Served By</label></td>
                         <td colspan="3">@Html.TextBoxFor(model => model.ServedBy, new { @class = "textbox", disabled = "disable" })<br /></td>
                         <td><label>Comments</label></td>
-                        <td colspan="2">@Html.TextAreaFor(model => model.Comments, new {@class = "textarea", rows = "3", cols = "50"})</td>
-                        <td><label style="color:hotpink; font-weight: bold; visibility: hidden" id="servdCase">This case has been served.</label></td>
+                        <td colspan="2">@Html.TextAreaFor(model => model.Comments, new { @class = "textarea", rows = "3", cols = "50" })</td>
+                        <td><label style="color: hotpink; font-weight: bold; visibility: hidden" id="servdCase">This case has been served.</label></td>
                     </tr>
                 </table>
             </div>
         </div>
-        <div>
-            <table>
-                <tr>
-                    <td><button type="submit" value="saveaccused" name="command" class="btn btn-success">No Sign Save</button> </td>
-                    <td><button type="button" value="Signature" id="btnSignature" class="btn btn-danger">Sign</button></td>
-                </tr>
-            </table>
-        </div>
-        <div class="modal fade" id="SignatureModal" tabindex="-1" role="basic" aria-hidden="true">
-            @*<div class="modal-dialog modal-wide">*@
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h4 class="modal-title" style="color:black;"><b>Signature</b></h4>
-                    </div>
-                    <div class="modal-body">
-                        <div style="text-align:center;" id="SignModal">
-                            <canvas class="pad" width="500" height="200" id="signCanvas" style="border: 1px solid grey;"></canvas>
-                            @Html.HiddenFor(x => x.SignatureValue, new { @class = "output" })
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="row" style="margin-top:6px;">
-                            <div class="col-md-3 DetailPadding col-sm-3">
-                                <div class="form-group">
-                                    <b></b>
-                                </div>
-                            </div>
-                            <div class="col-md-9 col-sm-9">
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" name="command" value="saveall">Save</button>
-                                    <button type="button" class="btn btn-primary" id="btnClearSignModal">Clear</button>
-                                    <button type="button" class="btn default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
+            <div>
+                <table>
+                    <tr>
+                        <td><button type="submit" value="saveaccused" name="command" class="btn btn-success">No Sign Save</button> </td>
+                        <td><button type="button" value="Signature" id="btnSignature" class="btn btn-danger">Sign</button></td>
+                    </tr>
+                </table>
             </div>
-            <!-- /.modal-dialog -->
-        </div>
-    </form>
+            <div class="modal fade" id="SignatureModal" tabindex="-1" role="basic" aria-hidden="true">
+                @*<div class="modal-dialog modal-wide">*@
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title" style="color: black;"><b>Signature</b></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div style="text-align: center;" id="SignModal">
+                                <canvas class="pad" width="500" height="200" id="signCanvas" style="border: 1px solid grey;"></canvas>
+                                @Html.HiddenFor(x => x.SignatureValue, new { @class = "output" })
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row" style="margin-top: 6px;">
+                                <div class="col-md-3 DetailPadding col-sm-3">
+                                    <div class="form-group">
+                                        <b></b>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-sm-9">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary" name="command" value="saveall">Save</button>
+                                        <button type="button" class="btn btn-primary" id="btnClearSignModal">Clear</button>
+                                        <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+    }
+        @*<form class="form_details" method="get" action='@Url.Action("Index", "Served")'>
+           
+        </form>*@
 </div>
 
 @section scripts{
