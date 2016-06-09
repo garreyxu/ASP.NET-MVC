@@ -56,7 +56,7 @@ namespace PoliceServeSystem.Controllers
                     TempData["success"] = "Saved successfully!";
                     return RedirectToAction("Index", "Served", model);
                 }
-                else if (command == "saveall")
+                if (command == "saveall")
                 {
                     //Write here code to save info with signature
                     _servedStatusDetailDataService.Save(model);

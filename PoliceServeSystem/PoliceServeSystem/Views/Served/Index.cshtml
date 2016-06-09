@@ -66,67 +66,65 @@
                 <table>
                     <tr>
                         <td><label>WarrantNo</label></td>
-                        <td>@Html.TextBoxFor(model => model.WarrantNo, new {@class = "textbox", style = "width:120px", name = "warrantNo", id = "warNo"})</td>
+                        <td>@Html.TextBoxFor(model => model.WarrantNo, new { @class = "textbox", style = "width:120px", name = "warrantNo", id = "warNo" })</td>
                         <td><input type="submit" value="Search" class="btn btn-info" /></td>
                         <td><label>Offense Name</label></td>
-                        <td>@Html.TextAreaFor(model => model.OffenseName, new {@class = "textarea", disabled = "disable", style = "width:300px"})</td>
+                        <td>@Html.TextAreaFor(model => model.OffenseName, new { @class = "textarea", disabled = "disable", style = "width:300px" })</td>
                         <td><label>Type</label></td>
-                        <td>@Html.TextBoxFor(model => model.OffenseType, new {@class = "textbox", disabled = "disable", style = "width:80px"})</td>
-                        <td><input type="button" name="logoff" value="logoff" class="btn btn-primary" onclick="LogOff()"/></td>
+                        <td>@Html.TextBoxFor(model => model.OffenseType, new { @class = "textbox", disabled = "disable", style = "width:80px" })</td>
+                        <td><input type="button" name="logoff" value="logoff" class="btn btn-primary" onclick="LogOff()" /></td>
                     </tr>
                 </table>
             </div>
         </div>
-        <hr/>
+        <hr />
         <div class="row">
             <div class="form-group">
                 <div>
                     <table>
                         <tr>
                             <td><label>CaseNo</label></td>
-                            <td>@Html.TextBoxFor(model => model.CaseNo, new {@class = "textbox", disabled = "disable", style = "width:100px"})</td>
+                            <td>@Html.TextBoxFor(model => model.CaseNo, new { @class = "textbox", disabled = "disable", style = "width:100px" })</td>
                             <td><label>AccusedNo</label></td>
-                            <td>@Html.TextBoxFor(model => model.AccusedNo, new {@class = "textbox", disabled = "disable", style = "width:50px"})</td>
+                            <td>@Html.TextBoxFor(model => model.AccusedNo, new { @class = "textbox", disabled = "disable", style = "width:50px" })</td>
                             <td><label>First Name</label></td>
-                            <td>@Html.TextBoxFor(model => model.AccusedFirstName, new {@class = "textbox", disabled = "disable", style = "width:100px"})</td>
+                            <td>@Html.TextBoxFor(model => model.AccusedFirstName, new { @class = "textbox", disabled = "disable", style = "width:100px" })</td>
                             <td><label>Last Name</label></td>
-                            <td colspan="2">@Html.TextBoxFor(model => model.AccusedLastName, new {@class = "textbox", disabled = "disable", style = "width:100px"})</td>
+                            <td colspan="2">@Html.TextBoxFor(model => model.AccusedLastName, new { @class = "textbox", disabled = "disable", style = "width:100px" })</td>
                             <td><label>Middel Name</label></td>
                             <td colspan="2">
-                                @Html.TextBoxFor(model => model.AccusedMiddleName, new {@class = "textbox", disabled = "disable", style = "width:100px"})
+                                @Html.TextBoxFor(model => model.AccusedMiddleName, new { @class = "textbox", disabled = "disable", style = "width:100px" })
                             </td>
                         </tr>
                         <tr>
                             <td><label>Street</label></td>
                             <td colspan="2">
-                                @Html.TextBoxFor(model => model.AccusedStreet, new {@class = "textbox", disabled = "disable"})
+                                @Html.TextBoxFor(model => model.AccusedStreet, new { @class = "textbox", disabled = "disable" })
                             </td>
                             <td><label>City</label></td>
                             <td colspan="2">
-                                @Html.TextBoxFor(model => model.AccusedCity, new {@class = "textbox", disabled = "disable", style = "width:150px"})
+                                @Html.TextBoxFor(model => model.AccusedCity, new { @class = "textbox", disabled = "disable", style = "width:150px" })
                             </td>
                             <td><label>State</label></td>
                             <td>
-                                @Html.TextBoxFor(model => model.AccusedState, new {@class = "textbox", disabled = "disable", style = "width:50px"})
+                                @Html.TextBoxFor(model => model.AccusedState, new { @class = "textbox", disabled = "disable", style = "width:50px" })
                             </td>
                             <td><label>Zip</label></td>
                             <td>
-                                @Html.TextBoxFor(model => model.AccusedZip, new {@class = "textbox", disabled = "disable", style = "width:80px"})
+                                @Html.TextBoxFor(model => model.AccusedZip, new { @class = "textbox", disabled = "disable", style = "width:80px" })
                             </td>
                             <td><label>Tel</label></td>
                             <td>
-                                @Html.TextBoxFor(model => model.AccusedTel, new {@class = "textbox", disabled = "disable", style = "width:100px"})
+                                @Html.TextBoxFor(model => model.AccusedTel, new { @class = "textbox", disabled = "disable", style = "width:100px" })
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-        <hr/>
+        <hr />
     </form>
-    @*<form class="form_details" method="get" action='@Url.Action("Index", "Served")'>*@
-    @using (Html.BeginForm("Index", "Served", FormMethod.Post) )
-    {
+    <form class="form_details" method="post" action='@Url.Action("Index", "Served")'>
         <div class="row">
             <div>
                 <table>
@@ -138,76 +136,74 @@
                         <td><label>Served Date</label></td>
                         <td>@Html.TextBoxFor(model => model.ServedDate, new { @class = "textbox", disabled = "disable" })</td>
                         <td><label>Served</label></td>
-                        <td>@Html.DropDownListFor(m => m.IsServed, listItemsIsServed, new { @class = "dropdownlist", disabled = "disable" })</td>
+                        <td>@Html.DropDownListFor(m => m.IsServed, listItemsIsServed, new { @class = "dropdownlist", disabled = "disable", id = "isServed" })</td>
                     </tr>
                     <tr>
                         <td><label>Served By</label></td>
                         <td colspan="3">@Html.TextBoxFor(model => model.ServedBy, new { @class = "textbox", disabled = "disable" })<br /></td>
                         <td><label>Comments</label></td>
                         <td colspan="2">@Html.TextAreaFor(model => model.Comments, new { @class = "textarea", rows = "3", cols = "50" })</td>
-                        <td><label style="color: hotpink; font-weight: bold; visibility: hidden" id="servdCase">This case has been served.</label></td>
+                        <td><label style="color: hotpink; font-weight: bold" id="servdCase">This case has been served.</label></td>
                     </tr>
                 </table>
             </div>
         </div>
-            <div>
-                <table>
-                    <tr>
-                        <td><button type="submit" value="saveaccused" name="command" class="btn btn-success">No Sign Save</button> </td>
-                        <td><button type="button" value="Signature" id="btnSignature" class="btn btn-danger">Sign</button></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="modal fade" id="SignatureModal" tabindex="-1" role="basic" aria-hidden="true">
-                @*<div class="modal-dialog modal-wide">*@
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                            <h4 class="modal-title" style="color: black;"><b>Signature</b></h4>
+        <div>
+            <table>
+                <tr>
+                    <td><button type="submit" value="saveaccused" name="command" class="btn btn-success">No Sign Save</button> </td>
+                    <td><button type="button" value="Signature" id="btnSignature" class="btn btn-danger">Sign</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal fade" id="SignatureModal" tabindex="-1" role="basic" aria-hidden="true">
+            @*<div class="modal-dialog modal-wide">*@
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title" style="color: black;"><b>Signature</b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align: center;" id="SignModal">
+                            <canvas class="pad" width="500" height="200" id="signCanvas" style="border: 1px solid grey;"></canvas>
+                            @Html.HiddenFor(x => x.SignatureValue, new { @class = "output" })
                         </div>
-                        <div class="modal-body">
-                            <div style="text-align: center;" id="SignModal">
-                                <canvas class="pad" width="500" height="200" id="signCanvas" style="border: 1px solid grey;"></canvas>
-                                @Html.HiddenFor(x => x.SignatureValue, new { @class = "output" })
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="row" style="margin-top: 6px;">
-                                <div class="col-md-3 DetailPadding col-sm-3">
-                                    <div class="form-group">
-                                        <b></b>
-                                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row" style="margin-top: 6px;">
+                            <div class="col-md-3 DetailPadding col-sm-3">
+                                <div class="form-group">
+                                    <b></b>
                                 </div>
-                                <div class="col-md-9 col-sm-9">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary" name="command" value="saveall">Save</button>
-                                        <button type="button" class="btn btn-primary" id="btnClearSignModal">Clear</button>
-                                        <button type="button" class="btn default" data-dismiss="modal">Close</button>
-                                    </div>
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" name="command" value="saveall">Save</button>
+                                    <button type="button" class="btn btn-primary" id="btnClearSignModal">Clear</button>
+                                    <button type="button" class="btn default" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- /.modal-content -->
                 </div>
-                <!-- /.modal-dialog -->
+                <!-- /.modal-content -->
             </div>
-    }
-        @*<form class="form_details" method="get" action='@Url.Action("Index", "Served")'>
-           
-        </form>*@
+            <!-- /.modal-dialog -->
+        </div>
+    </form>
 </div>
+
 
 @section scripts{
     <script src="~/Content/js/jquery.signaturepad.js"></script>
     <script>
         var sign;
         $(document)
-            .ready(function () {
+            .ready(function() {
                 $('#AccusedSign')
                     .on('Click',
-                        function () {
+                        function() {
                             window.open('/Signature/Signature',
                                 '_blank',
                                 'left=100,top=100,width=400,height=300,toolbar=1,resizable=0');
@@ -219,13 +215,13 @@
                         validateFields: false
                     });
                 $("#btnSignature")
-                    .click(function () {
+                    .click(function() {
                         $("#SignatureModal").modal({ show: true });
                     });
             });
 
         $("#btnClearSignModal")
-            .click(function () {
+            .click(function() {
                 $('.form_details').signaturePad().clearCanvas();
             });
 
@@ -236,6 +232,14 @@
         }
     </script>
     <script>
-        if(document.getElementById)
+        //var isServed = '<%=Model.IsServed%>';
+        $(document)
+            .ready(function() {
+                if ($('#isServed :selected').text() != "Yes") {
+                    $('#servdCase').hide();
+                } else {
+                    $('#servdCase').show();
+                }
+            });
     </script>
 }
