@@ -17,7 +17,7 @@ Login page
   background-color:#fff; 
   width: 360px;
   margin: 0 auto; 
-  margin-top: 150px;
+  margin-top: 100px;
   padding: 30px;  
   padding-top: 20px;  
   padding-bottom: 15px;  
@@ -65,7 +65,6 @@ Login page
   background-color: #fff;
   clear: both;
   border: 0;
-  border-bottom: 1px solid #eee;
   padding: 0 30px 25px 30px;
   margin-left: -30px;
   margin-right: -30px;
