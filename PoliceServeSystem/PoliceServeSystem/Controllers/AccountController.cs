@@ -68,7 +68,8 @@ namespace PoliceServeSystem.Controllers
                 ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
-            return RedirectToAction("Index", "Served");
+            //return RedirectToAction("Index", "Served");
+            return RedirectToAction("Home", "MainWarrant");
         }
 
         public JsonResult GetNotificationType()
