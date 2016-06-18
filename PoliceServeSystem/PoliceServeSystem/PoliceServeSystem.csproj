@@ -141,6 +141,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Builders\ServedStatusDetailBuilder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\MainWarrantController.cs" />
     <Compile Include="Controllers\ServedController.cs" />
     <Compile Include="Builders\IServedStatusDetailBuilder.cs" />
     <Compile Include="Controllers\SignatureController.cs" />
@@ -156,6 +157,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\ConfigurationSettingsReader.cs" />
+    <Compile Include="Helper\Cypher.cs" />
+    <Compile Include="Helper\KeyManager.cs" />
     <Compile Include="Helper\Tools.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AccusedInfo.cs" />
@@ -1979,6 +1982,7 @@
     <Content Include="Views\Served\NewServe.cshtml" />
     <Content Include="Views\Signature\Signature.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\MainWarrant\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\plugins\jquery-file-upload\server\php\files\thumbnail\" />
