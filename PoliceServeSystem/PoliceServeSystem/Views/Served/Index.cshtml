@@ -35,8 +35,8 @@
         },
         new SelectListItem
         {
-            Text = "Run away",
-            Value = "Run away"
+            Text = "Ran away",
+            Value = "Ran away"
         },
         new SelectListItem
         {
@@ -45,8 +45,8 @@
         },
         new SelectListItem
         {
-            Text = "Other",
-            Value = "Otherr"
+            Text = "Arrested",
+            Value = "Arrested"
         }
     };
 
@@ -60,6 +60,7 @@
         <p>@TempData["success"]</p>
     }
     @Html.ValidationSummary(true)
+    @*<form action="@Url.Action("Index1", "Served")" method="post">*@
     <form>
         <div class="row">
             <div class="form-group">
@@ -90,31 +91,33 @@
                             <td><label>First Name</label></td>
                             <td>@Html.TextBoxFor(model => model.AccusedFirstName, new { @class = "textbox", disabled = "disable", style = "width:100px" })</td>
                             <td><label>Last Name</label></td>
-                            <td colspan="2">@Html.TextBoxFor(model => model.AccusedLastName, new { @class = "textbox", disabled = "disable", style = "width:100px" })</td>
-                            <td colspan="2"><label>Middel Name</label></td>
-                            <td colspan="2">
+                            <td>@Html.TextBoxFor(model => model.AccusedLastName, new { @class = "textbox", disabled = "disable", style = "width:100px" })</td>
+                            <td><label>Middel Name</label></td>
+                            <td>
                                 @Html.TextBoxFor(model => model.AccusedMiddleName, new { @class = "textbox", disabled = "disable", style = "width:100px" })
                             </td>
                         </tr>
                         <tr>
                             <td><label>Street</label></td>
-                            <td colspan="2">
-                                @Html.TextBoxFor(model => model.AccusedStreet, new {@class = "textbox", disabled = "disable", id="street"})
+                            <td colspan="3">
+                                @Html.TextBoxFor(model => model.AccusedStreet, new { @class = "textbox", disabled = "disable", id = "street", size = "50" })
                             </td>
                             <td><button id="map" class="btn btn-success">Map</button></td>
+                        </tr>
+                        <tr>
                             <td><label>City</label></td>
-                            <td colspan="2">
-                                @Html.TextBoxFor(model => model.AccusedCity, new { @class = "textbox", disabled = "disable", style = "width:150px" ,id="city" })
-                            </td>
-                            <td><label>State</label></td>
                             <td>
-                                @Html.TextBoxFor(model => model.AccusedState, new { @class = "textbox", disabled = "disable", style = "width:50px", id="state" })
+                                @Html.TextBoxFor(model => model.AccusedCity, new { @class = "textbox", disabled = "disable", style = "width:150px", id = "city" })
                             </td>
-                            <td><label>Zip</label></td>
+                            <td><label style="text-align: right">State</label></td>
                             <td>
-                                @Html.TextBoxFor(model => model.AccusedZip, new { @class = "textbox", disabled = "disable", style = "width:80px", id="zip" })
+                                @Html.TextBoxFor(model => model.AccusedState, new { @class = "textbox", disabled = "disable", style = "width:50px", id = "state" })
                             </td>
-                            <td><label>Tel</label></td>
+                            <td><label style="text-align: right">Zip</label></td>
+                            <td>
+                                @Html.TextBoxFor(model => model.AccusedZip, new { @class = "textbox", disabled = "disable", style = "width:80px", id = "zip" })
+                            </td>
+                            <td><label style="text-align: right">Tel</label></td>
                             <td>
                                 @Html.TextBoxFor(model => model.AccusedTel, new { @class = "textbox", disabled = "disable", style = "width:100px" })
                             </td>
@@ -125,26 +128,26 @@
         </div>
         <hr />
     </form>
+    @*</form>*@
     <form class="form_details" method="post" action='@Url.Action("Index", "Served")'>
         <div class="row">
             <div>
                 <table>
                     <tr>
                         <td><label>Served Attempts</label></td>
-                        <td>@Html.TextBoxFor(model => model.ServedTimes, new { @class = "textbox", disabled = "disable", style = "width:50px" })</td>
-                        <td><label>Result</label></td>
+                        <td>@Html.TextBoxFor(m => m.ServedTimes, new { @class = "textbox", disabled = "disable", style = "width:50px" })</td>
+                        <td><label>Last Action</label></td>
                         <td>@Html.DropDownListFor(m => m.Result, listItemsResult, new { @class = "dropdownlist" })</td>
-                        <td><label>Served Date</label></td>
-                        <td>@Html.TextBoxFor(model => model.ServedDate, new { @class = "textbox", disabled = "disable" })</td>
+                        <td><label>Attempt Date</label></td>
+                        <td>@Html.TextBoxFor(m => m.ServedDate, new { @class = "textbox", disabled = "disable" })</td>
                         <td><label>Served</label></td>
                         <td>@Html.DropDownListFor(m => m.IsServed, listItemsIsServed, new { @class = "dropdownlist", disabled = "disable", id = "isServed" })</td>
                     </tr>
                     <tr>
                         <td><label>Served By</label></td>
-                        <td colspan="3">@Html.TextBoxFor(model => model.ServedBy, new { @class = "textbox", disabled = "disable" })<br /></td>
+                        <td colspan="3">@Html.TextBoxFor(m => m.ServedBy, new { @class = "textbox", disabled = "disable" })<br /></td>
                         <td><label>Comments</label></td>
-                        <td colspan="2">@Html.TextAreaFor(model => model.Comments, new { @class = "textarea", rows = "3", cols = "50" })</td>
-                        <td><label style="color: hotpink; font-weight: bold" id="servdCase">This case has been served.</label></td>
+                        <td colspan="2">@Html.TextAreaFor(m => m.Comments, new { @class = "textarea", rows = "3", cols = "50" })</td>
                     </tr>
                 </table>
             </div>
@@ -154,6 +157,8 @@
                 <tr>
                     <td><button type="submit" value="saveaccused" name="command" class="btn btn-success">No Sign Save</button> </td>
                     <td><button type="button" value="Signature" id="btnSignature" class="btn btn-danger">Sign</button></td>
+                    <td colspan='2'><span></span></td>
+                    <td><label style="color: hotpink; font-weight: bold" id="servdCase">This case has been served.</label></td>
                 </tr>
             </table>
         </div>
@@ -201,10 +206,10 @@
     <script>
         var sign;
         $(document)
-            .ready(function() {
+            .ready(function () {
                 $('#AccusedSign')
                     .on('Click',
-                        function() {
+                        function () {
                             window.open('/Signature/Signature',
                                 '_blank',
                                 'left=100,top=100,width=400,height=300,toolbar=1,resizable=0');
@@ -216,13 +221,13 @@
                         validateFields: false
                     });
                 $("#btnSignature")
-                    .click(function() {
+                    .click(function () {
                         $("#SignatureModal").modal({ show: true });
                     });
             });
 
         $("#btnClearSignModal")
-            .click(function() {
+            .click(function () {
                 $('.form_details').signaturePad().clearCanvas();
             });
 
@@ -235,8 +240,8 @@
     <script>
         //var isServed = '<%=Model.IsServed%>';
         $(document)
-            .ready(function() {
-                if ($('#isServed :selected').text() != "Yes") {
+            .ready(function () {
+                if ($('#isServed :selected').text() !== "Yes") {
                     $('#servdCase').hide();
                 } else {
                     $('#servdCase').show();
@@ -251,9 +256,9 @@
         var zip = document.getElementById("zip").value;
         var url = googMap + street + ",+" + city + ",+" + state + "+" + zip;
         $(document)
-            .ready(function() {
+            .ready(function () {
                 $('#map')
-                    .click(function() {
+                    .click(function () {
                         window.open(url, "popupWindow", "width=200, heeight=200");
                     });
             });
