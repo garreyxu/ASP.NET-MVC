@@ -57,6 +57,7 @@ namespace PoliceServeSystem.DAL
 
         public void Save(ServedStatusDetail ssd)
         {
+            #region save date into servedMVC
             try
             {
                 using (SqlConnection sqlConn = GetConnection.GetSqlConnection())
@@ -69,18 +70,21 @@ namespace PoliceServeSystem.DAL
                         cmd.Parameters.Add("@WarrantNo", SqlDbType.VarChar, 50).Value = ssd.WarrantNo;
                         cmd.Parameters.Add("@IsServed", SqlDbType.VarChar, 10).Value = ssd.SignatureValue != null ? "Yes" : "No";
                         cmd.Parameters.Add("@ServedDate", SqlDbType.DateTime).Value = ssd.ServedDate;
-                        cmd.Parameters.Add("@ServedBy", SqlDbType.VarChar, 20).Value =
-                            (string) HttpContext.Current.Session["OfficerName"];
+                        cmd.Parameters.Add("@ServedBy", SqlDbType.VarChar, 20).Value = (string) HttpContext.Current.Session["OfficerName"];
                         cmd.Parameters.Add("@Result", SqlDbType.VarChar, 100).Value = ssd.Result;
                         if (ssd.SignatureValue != null)
                         {
                             cmd.Parameters.Add("@SignatureValue", SqlDbType.VarChar, 8000).Value = ssd.SignatureValue;
+                            cmd.Parameters.Add("@SignatureString", SqlDbType.Image).Value = ssd.SignatureString;
                         }
                         else
                         {
                             cmd.Parameters.Add("@SignatureValue", SqlDbType.VarChar, 8000).Value = DBNull.Value;
+                            cmd.Parameters.Add("@SignatureString", SqlDbType.Image).Value = DBNull.Value;
                         }
                         cmd.Parameters.Add("@Comments", SqlDbType.VarChar, 1000).Value = ssd.Comments;
+
+                        
 
                         cmd.ExecuteNonQuery();
                         //Add save successfully info
@@ -91,6 +95,36 @@ namespace PoliceServeSystem.DAL
             {
                 throw new Exception("Could not load data in Accused Object", ex);
             }
+            #endregion
+
+            #region save date into served
+            try
+            {
+                using (SqlConnection sqlConn = GetConnection.GetSqlConnection())
+                {
+                    sqlConn.Open();
+                    using (var cmd = new SqlCommand("Net_InsertUpdateServed", sqlConn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.Add("@WarrantNo", SqlDbType.VarChar, 50).Value = ssd.WarrantNo;
+                        cmd.Parameters.Add("@Is_Served", SqlDbType.VarChar, 20).Value = ssd.SignatureValue != null ? "Yes" : "No";
+                        cmd.Parameters.Add("@ServedDate", SqlDbType.VarChar, 30).Value = ssd.ServedDate;
+                        cmd.Parameters.Add("@ServedBy", SqlDbType.VarChar, 20).Value = (string)HttpContext.Current.Session["OfficerName"];
+                        cmd.Parameters.Add("@Result", SqlDbType.VarChar, 3000).Value = ssd.Comments;
+                        cmd.Parameters.Add("@ServedTimes", SqlDbType.VarChar, 30).Value = ssd.ServedTimes;
+
+                        cmd.ExecuteNonQuery();
+                        //Add save successfully info
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Could not load data in Accused Object", ex);
+            }
+            #endregion
+
         }
 
         private void ReadData(Served served, SqlDataReader sqlDataReader)

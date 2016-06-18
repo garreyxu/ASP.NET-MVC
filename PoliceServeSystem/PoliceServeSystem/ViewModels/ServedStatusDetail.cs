@@ -36,7 +36,7 @@ namespace PoliceServeSystem.ViewModels
         public bool IfHasCaseRecord { get; set; }
         public string SignatureValue { get; set; }
         public string Comments { get; set; }
-
+        public byte[] SignatureString { get; set; }
         #endregion
 
         #region Constructor
